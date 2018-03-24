@@ -11,7 +11,7 @@ public:
         int size2 = nums2.size();
         nums1.insert(nums1.end(),nums2.begin(),nums2.end());
         sort(nums1.begin(),nums1.end());
-        double median ;
+        double median ;i
         if((size1+size2)%2==0){
             int number1 = nums1[(size1+size2+1)>>1];
             int number2 = nums1[(size1+size2-1)>>1];
