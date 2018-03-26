@@ -15,8 +15,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="618d670e-68b7-4d86-8c55-dfb1d8fdd12d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/LongestPalindromicSubstring.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ReverseInteger.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/median.cpp" afterPath="$PROJECT_DIR$/median.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,11 +44,10 @@
       <file leaf-file-name="two_sum.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/two_sum.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="20" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1521603318054" expanded="true" signature="550:1049" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -55,8 +56,8 @@
       <file leaf-file-name="HammingDistance.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HammingDistance.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="22" column="45" lean-forward="false" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+            <state relative-caret-position="84">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="5" selection-end-column="19" />
               <folding>
                 <element signature="e#43#63#0" expanded="true" />
               </folding>
@@ -86,14 +87,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="median.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/median.cpp">
+      <file leaf-file-name="LongestPalindromicSubstring.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LongestPalindromicSubstring.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+            <state relative-caret-position="896">
+              <caret line="32" column="54" lean-forward="false" selection-start-line="32" selection-start-column="54" selection-end-line="32" selection-end-column="54" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#44#61#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReverseInteger.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ReverseInteger.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="38" selection-end-column="2" />
+              <folding>
+                <element signature="e#90#107#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basic_string.h" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/include/c++/5/bits/basic_string.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147196">
+              <caret line="5257" column="2" lean-forward="false" selection-start-line="5257" selection-start-column="2" selection-end-line="5257" selection-end-column="2" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -111,8 +134,10 @@
         <option value="$PROJECT_DIR$/add_two_numbers.cpp" />
         <option value="$PROJECT_DIR$/longestSubstringWithoutRepeating .cpp" />
         <option value="$PROJECT_DIR$/longestSubstringWithoutRepeating.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/median.cpp" />
+        <option value="$PROJECT_DIR$/LongestPalindromicSubstring.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/ReverseInteger.cpp" />
       </list>
     </option>
   </component>
@@ -400,35 +425,38 @@
       <workItem from="1521858535425" duration="224000" />
       <workItem from="1521860811877" duration="332000" />
       <workItem from="1521861666673" duration="3048000" />
-      <workItem from="1521904891443" duration="1050000" />
+      <workItem from="1521904891443" duration="2423000" />
+      <workItem from="1521907445795" duration="2122000" />
+      <workItem from="1521959787806" duration="2148000" />
+      <workItem from="1522045156093" duration="1551000" />
+      <workItem from="1522062543403" duration="663000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10988000" />
+    <option name="totallyTimeSpent" value="18845000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-11" width="1922" height="1092" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26881722" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2860215" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286026" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978212" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3995633" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32751092" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3286026" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -471,8 +499,21 @@
           <line>13</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/ReverseInteger.cpp</url>
+          <line>15</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/ReverseInteger.cpp</url>
+          <line>22</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="7" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="32" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
@@ -482,10 +523,181 @@
         <watch expression="nums1[(size1+size2+1)&gt;&gt;1]" language="ObjectiveC" />
         <watch expression="nums1[3]" language="ObjectiveC" />
         <watch expression="nums1[2]" language="ObjectiveC" />
+        <watch expression="s==sCopy" language="ObjectiveC" />
+        <watch expression="s.compare(sCopy)" language="ObjectiveC" />
+        <watch expression="value" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/two_sum.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HammingDistance.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="5" selection-end-column="19" />
+          <folding>
+            <element signature="e#43#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/add_two_numbers.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/longestSubstringWithoutRepeating.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1092">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="43" selection-end-column="1" />
+          <folding>
+            <element signature="e#43#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LongestPalindromicSubstring.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="896">
+          <caret line="32" column="54" lean-forward="false" selection-start-line="32" selection-start-column="54" selection-end-line="32" selection-end-column="54" />
+          <folding>
+            <element signature="e#44#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/two_sum.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HammingDistance.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="5" selection-end-column="19" />
+          <folding>
+            <element signature="e#43#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/add_two_numbers.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/longestSubstringWithoutRepeating.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1092">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="43" selection-end-column="1" />
+          <folding>
+            <element signature="e#43#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LongestPalindromicSubstring.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#44#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/two_sum.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HammingDistance.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="5" selection-end-column="19" />
+          <folding>
+            <element signature="e#43#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/add_two_numbers.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/longestSubstringWithoutRepeating.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1092">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="43" selection-end-column="1" />
+          <folding>
+            <element signature="e#43#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LongestPalindromicSubstring.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="812">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="e#44#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -500,7 +712,6 @@
           <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1521603318054" expanded="true" signature="550:1049" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -557,7 +768,6 @@
           <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1521603318054" expanded="true" signature="550:1049" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -604,7 +814,6 @@
           <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1521603318054" expanded="true" signature="550:1049" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -651,7 +860,6 @@
           <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1521603318054" expanded="true" signature="550:1049" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -688,7 +896,6 @@
           <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1521603318054" expanded="true" signature="550:1049" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -704,32 +911,31 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp" />
-    <entry file="file://$PROJECT_DIR$/two_sum.cpp">
+    <entry file="file://$PROJECT_DIR$/add_two_numbers.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <marker date="1521603318054" expanded="true" signature="550:1049" ph="{...}" />
-          </folding>
+        <state relative-caret-position="700">
+          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HammingDistance.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="22" column="45" lean-forward="false" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+        <state relative-caret-position="84">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="5" selection-end-column="19" />
           <folding>
             <element signature="e#43#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/add_two_numbers.cpp">
+    <entry file="file://$PROJECT_DIR$/median.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
-          <folding />
+        <state relative-caret-position="280">
+          <caret line="13" column="23" lean-forward="false" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -743,6 +949,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/two_sum.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LongestPalindromicSubstring.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="896">
+          <caret line="32" column="54" lean-forward="false" selection-start-line="32" selection-start-column="54" selection-end-line="32" selection-end-column="54" />
+          <folding>
+            <element signature="e#44#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -751,12 +977,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/median.cpp">
+    <entry file="file:///usr/include/c++/5/bits/basic_string.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+        <state relative-caret-position="147196">
+          <caret line="5257" column="2" lean-forward="false" selection-start-line="5257" selection-start-column="2" selection-end-line="5257" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ReverseInteger.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="38" selection-end-column="2" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#90#107#0" expanded="true" />
           </folding>
         </state>
       </provider>
