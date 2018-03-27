@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/leetcode.dir/ReverseInteger.cpp.o  -o leetcode 
