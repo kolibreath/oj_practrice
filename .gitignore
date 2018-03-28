@@ -1,8 +1,6 @@
-/leetcode_cpp/*debug/
-/leetcode_cpp/*.txt
+*debug
+*.txt
 *.iml
-/leetcode_java/.idea/
-/leetcode_java/out/
-/leetcode_java/src/Tester.java
+.idea/
 *idea/
 
