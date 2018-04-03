@@ -123,32 +123,59 @@ leetcode/fast:
 	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/build
 .PHONY : leetcode/fast
 
-ReverseInteger.o: ReverseInteger.cpp.o
+IntegerToRoman.o: IntegerToRoman.cpp.o
 
-.PHONY : ReverseInteger.o
+.PHONY : IntegerToRoman.o
 
 # target to build an object file
-ReverseInteger.cpp.o:
-	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/ReverseInteger.cpp.o
-.PHONY : ReverseInteger.cpp.o
+IntegerToRoman.cpp.o:
+	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/IntegerToRoman.cpp.o
+.PHONY : IntegerToRoman.cpp.o
 
-ReverseInteger.i: ReverseInteger.cpp.i
+IntegerToRoman.i: IntegerToRoman.cpp.i
 
-.PHONY : ReverseInteger.i
+.PHONY : IntegerToRoman.i
 
 # target to preprocess a source file
-ReverseInteger.cpp.i:
-	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/ReverseInteger.cpp.i
-.PHONY : ReverseInteger.cpp.i
+IntegerToRoman.cpp.i:
+	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/IntegerToRoman.cpp.i
+.PHONY : IntegerToRoman.cpp.i
 
-ReverseInteger.s: ReverseInteger.cpp.s
+IntegerToRoman.s: IntegerToRoman.cpp.s
 
-.PHONY : ReverseInteger.s
+.PHONY : IntegerToRoman.s
 
 # target to generate assembly for a file
-ReverseInteger.cpp.s:
-	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/ReverseInteger.cpp.s
-.PHONY : ReverseInteger.cpp.s
+IntegerToRoman.cpp.s:
+	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/IntegerToRoman.cpp.s
+.PHONY : IntegerToRoman.cpp.s
+
+RomanToInteger.o: RomanToInteger.cpp.o
+
+.PHONY : RomanToInteger.o
+
+# target to build an object file
+RomanToInteger.cpp.o:
+	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/RomanToInteger.cpp.o
+.PHONY : RomanToInteger.cpp.o
+
+RomanToInteger.i: RomanToInteger.cpp.i
+
+.PHONY : RomanToInteger.i
+
+# target to preprocess a source file
+RomanToInteger.cpp.i:
+	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/RomanToInteger.cpp.i
+.PHONY : RomanToInteger.cpp.i
+
+RomanToInteger.s: RomanToInteger.cpp.s
+
+.PHONY : RomanToInteger.s
+
+# target to generate assembly for a file
+RomanToInteger.cpp.s:
+	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/RomanToInteger.cpp.s
+.PHONY : RomanToInteger.cpp.s
 
 # Help Target
 help:
@@ -159,9 +186,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... leetcode"
-	@echo "... ReverseInteger.o"
-	@echo "... ReverseInteger.i"
-	@echo "... ReverseInteger.s"
+	@echo "... IntegerToRoman.o"
+	@echo "... IntegerToRoman.i"
+	@echo "... IntegerToRoman.s"
+	@echo "... RomanToInteger.o"
+	@echo "... RomanToInteger.i"
+	@echo "... RomanToInteger.s"
 .PHONY : help
 
 

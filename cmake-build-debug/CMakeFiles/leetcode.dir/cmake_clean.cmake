@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/leetcode.dir/ReverseInteger.cpp.o"
+  "CMakeFiles/leetcode.dir/IntegerToRoman.cpp.o"
+  "CMakeFiles/leetcode.dir/RomanToInteger.cpp.o"
   "leetcode.pdb"
   "leetcode"
 )

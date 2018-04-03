@@ -3,5 +3,5 @@ project(leetcode)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES  ReverseInteger.cpp)
+set(SOURCE_FILES IntegerToRoman.cpp RomanToInteger.cpp)
 add_executable(leetcode ${SOURCE_FILES})
