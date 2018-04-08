@@ -3,5 +3,5 @@ project(leetcode)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES IntegerToRoman.cpp RomanToInteger.cpp)
+set(SOURCE_FILES ThreeSumCloset.cpp generateParenthesis.cpp)
 add_executable(leetcode ${SOURCE_FILES})

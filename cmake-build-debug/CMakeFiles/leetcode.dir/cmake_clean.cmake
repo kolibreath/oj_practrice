@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/leetcode.dir/IntegerToRoman.cpp.o"
-  "CMakeFiles/leetcode.dir/RomanToInteger.cpp.o"
+  "CMakeFiles/leetcode.dir/ThreeSumCloset.cpp.o"
+  "CMakeFiles/leetcode.dir/generateParenthesis.cpp.o"
   "leetcode.pdb"
   "leetcode"
 )

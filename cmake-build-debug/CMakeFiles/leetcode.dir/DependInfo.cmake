@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/kolibreath/CLionProjects/leetcode/IntegerToRoman.cpp" "/home/kolibreath/CLionProjects/leetcode/cmake-build-debug/CMakeFiles/leetcode.dir/IntegerToRoman.cpp.o"
-  "/home/kolibreath/CLionProjects/leetcode/RomanToInteger.cpp" "/home/kolibreath/CLionProjects/leetcode/cmake-build-debug/CMakeFiles/leetcode.dir/RomanToInteger.cpp.o"
+  "/home/kolibreath/CLionProjects/leetcode/ThreeSumCloset.cpp" "/home/kolibreath/CLionProjects/leetcode/cmake-build-debug/CMakeFiles/leetcode.dir/ThreeSumCloset.cpp.o"
+  "/home/kolibreath/CLionProjects/leetcode/generateParenthesis.cpp" "/home/kolibreath/CLionProjects/leetcode/cmake-build-debug/CMakeFiles/leetcode.dir/generateParenthesis.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

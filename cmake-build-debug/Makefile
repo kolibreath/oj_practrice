@@ -123,59 +123,59 @@ leetcode/fast:
 	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/build
 .PHONY : leetcode/fast
 
-IntegerToRoman.o: IntegerToRoman.cpp.o
+ThreeSumCloset.o: ThreeSumCloset.cpp.o
 
-.PHONY : IntegerToRoman.o
-
-# target to build an object file
-IntegerToRoman.cpp.o:
-	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/IntegerToRoman.cpp.o
-.PHONY : IntegerToRoman.cpp.o
-
-IntegerToRoman.i: IntegerToRoman.cpp.i
-
-.PHONY : IntegerToRoman.i
-
-# target to preprocess a source file
-IntegerToRoman.cpp.i:
-	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/IntegerToRoman.cpp.i
-.PHONY : IntegerToRoman.cpp.i
-
-IntegerToRoman.s: IntegerToRoman.cpp.s
-
-.PHONY : IntegerToRoman.s
-
-# target to generate assembly for a file
-IntegerToRoman.cpp.s:
-	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/IntegerToRoman.cpp.s
-.PHONY : IntegerToRoman.cpp.s
-
-RomanToInteger.o: RomanToInteger.cpp.o
-
-.PHONY : RomanToInteger.o
+.PHONY : ThreeSumCloset.o
 
 # target to build an object file
-RomanToInteger.cpp.o:
-	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/RomanToInteger.cpp.o
-.PHONY : RomanToInteger.cpp.o
+ThreeSumCloset.cpp.o:
+	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/ThreeSumCloset.cpp.o
+.PHONY : ThreeSumCloset.cpp.o
 
-RomanToInteger.i: RomanToInteger.cpp.i
+ThreeSumCloset.i: ThreeSumCloset.cpp.i
 
-.PHONY : RomanToInteger.i
+.PHONY : ThreeSumCloset.i
 
 # target to preprocess a source file
-RomanToInteger.cpp.i:
-	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/RomanToInteger.cpp.i
-.PHONY : RomanToInteger.cpp.i
+ThreeSumCloset.cpp.i:
+	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/ThreeSumCloset.cpp.i
+.PHONY : ThreeSumCloset.cpp.i
 
-RomanToInteger.s: RomanToInteger.cpp.s
+ThreeSumCloset.s: ThreeSumCloset.cpp.s
 
-.PHONY : RomanToInteger.s
+.PHONY : ThreeSumCloset.s
 
 # target to generate assembly for a file
-RomanToInteger.cpp.s:
-	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/RomanToInteger.cpp.s
-.PHONY : RomanToInteger.cpp.s
+ThreeSumCloset.cpp.s:
+	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/ThreeSumCloset.cpp.s
+.PHONY : ThreeSumCloset.cpp.s
+
+generateParenthesis.o: generateParenthesis.cpp.o
+
+.PHONY : generateParenthesis.o
+
+# target to build an object file
+generateParenthesis.cpp.o:
+	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/generateParenthesis.cpp.o
+.PHONY : generateParenthesis.cpp.o
+
+generateParenthesis.i: generateParenthesis.cpp.i
+
+.PHONY : generateParenthesis.i
+
+# target to preprocess a source file
+generateParenthesis.cpp.i:
+	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/generateParenthesis.cpp.i
+.PHONY : generateParenthesis.cpp.i
+
+generateParenthesis.s: generateParenthesis.cpp.s
+
+.PHONY : generateParenthesis.s
+
+# target to generate assembly for a file
+generateParenthesis.cpp.s:
+	$(MAKE) -f CMakeFiles/leetcode.dir/build.make CMakeFiles/leetcode.dir/generateParenthesis.cpp.s
+.PHONY : generateParenthesis.cpp.s
 
 # Help Target
 help:
@@ -186,12 +186,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... leetcode"
-	@echo "... IntegerToRoman.o"
-	@echo "... IntegerToRoman.i"
-	@echo "... IntegerToRoman.s"
-	@echo "... RomanToInteger.o"
-	@echo "... RomanToInteger.i"
-	@echo "... RomanToInteger.s"
+	@echo "... ThreeSumCloset.o"
+	@echo "... ThreeSumCloset.i"
+	@echo "... ThreeSumCloset.s"
+	@echo "... generateParenthesis.o"
+	@echo "... generateParenthesis.i"
+	@echo "... generateParenthesis.s"
 .PHONY : help
 
 
