@@ -1,1 +1,0 @@
-/usr/bin/c++   -g   CMakeFiles/leetcode.dir/ThreeSumCloset.cpp.o CMakeFiles/leetcode.dir/generateParenthesis.cpp.o  -o leetcode 
