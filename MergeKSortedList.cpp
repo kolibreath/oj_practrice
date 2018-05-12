@@ -59,27 +59,3 @@ public:
     }
 };
 
-
-
-int main(){
-    ListNode *l1 = new ListNode(1);
-    l1->next=  new ListNode(4);
-    l1->next->next = new ListNode(5);
-
-    ListNode *l2 = new ListNode(1);
-    l2->next  = new ListNode(3);
-    l2->next->next = new ListNode(4);
-
-    ListNode *l3 = new ListNode(2);
-    l2->next  = new ListNode(6);
-//    l2->next->next = new ListNode(4);
-
-    vector<ListNode*> vector1;
-    vector1.push_back(l1);
-    vector1.push_back(l2);
-    vector1.push_back(l3);
-
-    Solution solution;
-    cout<<solution.mergeKLists(vector1)->next;
-    return 0;
-}

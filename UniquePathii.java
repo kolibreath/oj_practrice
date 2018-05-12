@@ -1,5 +1,6 @@
 public class UniquePathii {
-    static class Solution {
+//    static
+ class Solution {
         public int uniquePathsWithObstacles(int[][] obstacleGrid) {
             int m = obstacleGrid.length, n = obstacleGrid[0].length;
                 if(obstacleGrid[0][0]==1||obstacleGrid[m-1][n-1]==1)
@@ -27,4 +28,5 @@ public class UniquePathii {
             return dp[m-1][n-1];
         }
     }
+
 }
