@@ -1,58 +1,24 @@
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Comparator;
 
 public class CoinChange {
     static class Solution {
         public int coinChange(int[] coins, int amount) {
-            int amountCopy = amount;
-            int value[] = new int[coins.length], key[] = new int[coins.length];
-            Arrays.sort(coins);
-            for(int i=coins.length-1, j = 0;i>=0;i--, j++) {
-                key[j] = coins[i];
-                value[i] = 0;
-            }
-            value[0]=  amountCopy / key[0];
-            amountCopy = amountCopy  -value[0] * key[0];
-            while(value[0]>0){
-                for(int i=1;i<key.length;i++){
-                    int valueCopy = amountCopy/key[i];
-                    int copy = amountCopy - valueCopy*key[i];
-
-                    if(copy > 0){
-                        amountCopy = copy;
-                        value[i] = valueCopy;
-                    }else if(copy == 0){
-                        amountCopy  = copy;
-                        value[i] = valueCopy;
-                        break;
-                    }else {
-                        continue;
-                    }
-                }
-            if(amountCopy ==0) break;
-                else
-                    {value[0] --;
-                    amountCopy += key[0];
-                    for(int i=1;i<value.length;i++){
-                        if(value[i]!=0){
-                            amountCopy += value[i]*key[i];
-                            value[i]= 0;
-                        }
-                    }
-                }
-                
-            }
-            if(amountCopy!=0){
-                return -1;
-            }
-            int total = 0;
-            for(int i=0;i<value.length;i++){
-                total += value[i];
-            }
-            return total;
+            int dp[] = new int[amount + 1];
+            dp[0] = 0;
+            Arrays.fill(dp,Integer.MAX_VALUE);
+            return coinChangeDFS(dp,amount,coins);
         }
 
+        int coinChangeDFS(int dp[],int amount, int coins[]){
+            if(amount  < 0)return -1;
+            if(dp[amount] != Integer.MAX_VALUE) return dp[amount];
+            for(int j= 0;j<coins.length;j++){
+                int temp = coinChangeDFS(dp,amount - coins[j],coins);
+                if(temp >=0) { dp[amount] = Math.min(temp+ 1, dp[amount]); }
+            }
+            return dp[amount] = dp[amount]==Integer.MAX_VALUE ? -1 : dp[amount];
+        }
     }
-
-
 }
