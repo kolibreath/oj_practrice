@@ -1,22 +1,29 @@
+import java.util.LinkedList;
+import java.util.List;
 
-fun nameProcessor(formername:String):String{
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-    var result = ""
-    for(ch in formername){
-        when(ch){
-             ' ' -> { }
+            helper(n,k,1,out,result);
 
-            '-'->{
-                result += '_'
+            return result;
+        }
+
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-            else -> {
-                result += ch
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
         }
     }
-    return result
-}
-
-fun main(args:Array<String>){
-    print(nameProcessor(" N-ary Tree Level Order Traversal"))
 }

@@ -1,39 +1,29 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class Permutations {
-    static class Solution {
-        public List<List<Integer>> permute(int[] nums) {
-            if(nums == null || nums.length== 0)
-                return new ArrayList<>();
-            List<List<Integer>> res  = new ArrayList<>();
-            perMutations(res,0,nums);
-            return res;
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
+
+            helper(n,k,1,out,result);
+
+            return result;
         }
 
-        public void perMutations(List<List<Integer>> res,int start,int nums[]){
-            if(start >= nums.length){
-                res.add(converter(nums));
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-            for(int i = start;i<nums.length;i++){
-                swap(nums,i,start);
-                perMutations(res,start+1,nums);
-                swap(nums,i,start);
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
-        }
-
-        public void swap(int num[],int index1,int index2){
-            int temp = num[index1];
-            num[index1] = num[index2];
-            num[index2] = temp;
-        }
-
-        public List<Integer> converter(int nums[]){
-            List<Integer> list=  new ArrayList<>();
-            for(int n : nums){
-                list.add(n);
-            }
-            return list;
         }
     }
 }

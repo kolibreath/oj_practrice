@@ -1,44 +1,28 @@
-public class ImplementstrSTr {
-    class Solution {
-        public int strStr(String haystack, String needle) {
-            if(haystack.length()< needle.length())
-                return -1;
-            if(needle.length() == 0)
-                return 0;
-            int number[] = new int[needle.length()];
-            getNext(needle, number);
+import java.util.LinkedList;
+import java.util.List;
 
-            int hlen = haystack.length();
-            int nlen = needle.length();
-            int next[] = new int[needle.length()];
-            getNext(needle,next);
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-            int i = 0, j= 0;
-            while(i < hlen && j<nlen){
-                if(j == -1 || haystack.charAt(i) == needle.charAt(j)){
-                    i ++;j++;
-                }else{
-                    j = next[j];
-                }
-            }
-            if(j == nlen){
-                return i - nlen;
-            }else{
-                return -1;
-            }
+            helper(n,k,1,out,result);
+
+            return result;
         }
 
-        private void getNext(String needle,int next[]){
-            int nlen = needle.length();
-            int j = -1, i = 0;
-            next[i] = -1;
-            while(i < nlen -1){
-                if(j == -1 || needle.charAt(i) == needle.charAt(j)){
-                    j ++ ;i++;
-                    next[i] = j;
-                }else{
-                    j = next[j];
-                }
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
         }
     }

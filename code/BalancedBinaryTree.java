@@ -1,46 +1,29 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class BalancedBinaryTree {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-  public static class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode(int x) { val = x; }
-  }
+            helper(n,k,1,out,result);
 
-    static class Solution  {
-        public boolean isBalanced(TreeNode root) {
-            if(root == null)
-                return true;
-
-            List<Integer> depths = new ArrayList<>();
-            getDepths(depths,root,0);
-
-            int max = depths.get(0), min = depths.get(0);
-            for(int i : depths){
-                if(i > max)
-                    max = i;
-                if(i < min)
-                    min = i;
-            }
-
-            return max - min <= 1;
+            return result;
         }
 
-        public void getDepths(List<Integer> depths, TreeNode root,int counter){
-
-            counter++;
-            if(root.left ==null && root.right == null) {
-                depths.add(counter);
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
                 return;
             }
-            getDepths(depths,root.left,counter);
-            getDepths(depths,root.right,counter);
-            return;
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
-
-
     }
 }

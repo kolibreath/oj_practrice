@@ -1,35 +1,29 @@
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
-public class AvergeOfLevelsinBinaryTree {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
+            helper(n,k,1,out,result);
 
-    static class Solution {
-        public List<Double> averageOfLevels(TreeNode root) {
-            List<Double> list = new ArrayList<>();
-
-            Queue<TreeNode> queue = new LinkedList<>();
-            queue.add(root);
-
-            while(!queue.isEmpty()) {
-                int size = queue.size();
-                double sum = 0;
-                for(int i=0;i<size;i++){
-                    TreeNode node = queue.poll();
-                    sum += node.val;
-                    if(node.left != null )
-                        queue.add(node.left);
-                    if(node.right!= null)
-                        queue.add(node.right);
-                }
-                list.add(sum / size);
-            }
-
-            return list;
+            return result;
         }
 
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
+        }
     }
-
 }

@@ -1,36 +1,29 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class PathSumiii {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
+            helper(n,k,1,out,result);
 
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
-
-    class Solution {
-        int counter=0;
-        public int pathSum(TreeNode root, int sum) {
-            if(root==null)return 0;
-            DFS(root,sum);
-            pathSum(root.left,sum);
-            pathSum(root.right,sum);
-            return counter;
+            return result;
         }
 
-        private void DFS(TreeNode node,int sum){
-            if(node==null){
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
                 return;
             }
-            if(sum-node.val==0){
-                counter++;
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
-            DFS(node.left,sum-node.val);
-            DFS(node.right,sum-node.val);
-
         }
     }
 }

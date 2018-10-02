@@ -1,24 +1,29 @@
-public class MaxAreaOfIsland {
-    class Solution {
-        public int maxAreaOfIsland(int[][] grid) {
+import java.util.LinkedList;
+import java.util.List;
 
-            int maxArea = 0;
-            for(int i=0;i<grid.length;i++){
-                for(int j =0;j<grid[0].length;j++){
-                    maxArea = Math.max(getMax(grid,i,j),maxArea);
-                }
-            }
-            return maxArea;
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
+
+            helper(n,k,1,out,result);
+
+            return result;
         }
 
-        public int getMax(int [][]grid,int i,int j){
-            if( i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == 0)
-                return 0;
-
-            int max = 1;
-            grid[i][j] = 0;
-            max = max + getMax(grid,i+1,j) + getMax(grid,i-1,j) + getMax(grid,i,j+1) +getMax(grid,i,j-1);
-            return max;
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

@@ -1,49 +1,29 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class LetterCasePermutation {
-    //this method will be max time exceeded
-        class Solution {
-            public List<String> letterCasePermutation(String S) {
-                if( S == null)
-                    return new ArrayList<>();
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-                if( S.length() == 0){
-                    List<String> list = new ArrayList<>();
-                    list.add("");
-                    return list;
-                }
-                List<String> list = new ArrayList<>();
-                change(list,0,S);
+            helper(n,k,1,out,result);
 
-                if(list.size() !=0 )
-                    return list;
-                else{
-                    list.add(S);
-                    return list;
-                }
+            return result;
+        }
+
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-
-            private void change(List<String> list,int index,String str){
-                for(int i=index;i<str.length();i++){
-                    if(Character.isAlphabetic(str.charAt(i))) {
-                        char lowerCase[] = str.toCharArray();
-                        lowerCase[i] = Character.toLowerCase(lowerCase[i]);
-                        String lower = String.valueOf(lowerCase);
-                        if(!list.contains(lower))
-                            list.add(lower);
-
-                        change(list,index + 1,lower);
-
-                        char upperCase[] = str.toCharArray();
-                        upperCase[i] = Character.toUpperCase(lowerCase[i]);
-                        String upper = String.valueOf(upperCase);
-                        if(!list.contains(upper))
-                            list.add(upper);
-
-                        change(list,index + 1,upper);
-                    }
-                }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
         }
+    }
 }

@@ -1,46 +1,29 @@
-public class DiameterOfBinaryTree {
+import java.util.LinkedList;
+import java.util.List;
 
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-     public static class TreeNode {
-         int val;
-         TreeNode left;
-         TreeNode right;
-         TreeNode(int x) { val = x; }
-     }
+            helper(n,k,1,out,result);
 
-    static class  Solution {
-        public int diameterOfBinaryTree(TreeNode root) {
-            if (root == null)
-                return 0;
-
-            if (root.left == null && root.right == null)
-                return 1;
-
-            int left = 0;
-            if (root.left.left == null && root.left.right == null) {
-                left = 0;
-            } else {
-                left = getHeight(root.left, 0);
-                ;
-            }
-
-            int right = 0;
-            if (root.right.left == null && root.right.right == null) {
-                right = 0;
-            } else {
-                right = getHeight(root.right, 0);
-                ;
-            }
-
-            return left + right + 1;
-
+            return result;
         }
 
-        public int getHeight(TreeNode root, int height) {
-            if (root == null)
-                return height;
-
-            return Math.max(getHeight(root.left, height + 1), getHeight(root.right, height + 1));
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

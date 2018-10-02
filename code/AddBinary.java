@@ -1,37 +1,29 @@
-import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
-public class AddBinary{
-    static class Solution {
-        public String addBinary(String a, String b) {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-            int forward = 0;
-            int max = a.length() > b.length() ? a.length() : b.length();
-            char sa[] = new char[max + 1];
-            for(int i = a.length() - 1, j = b.length() -1 ;i >= 0 || j >= 0 ; i -- ,j --){
-                int c, d;
-                if(i < 0){
-                    c = 0;
-                }else{
-                    c = a.charAt(i) - '0';
-                }
-                if(j < 0) {
-                    d = 0;
-                }else{
-                    d = b.charAt(j) - '0';
-                }
-                sa[max--] = (char)( (c + d + forward )%2 + '0');
-                forward = (c + d + forward) /2;
+            helper(n,k,1,out,result);
+
+            return result;
+        }
+
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-            sa[max] = (char) (forward + '0');
-            boolean flag = false;
-            String result = "";
-            for(char c: sa){
-                if(c - '0' != 0)
-                    flag  = true;
-                if(flag)
-                    result += c;
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
-            return result.length() == 0 ? "0" : result;
         }
     }
 }

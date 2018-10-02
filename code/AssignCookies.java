@@ -1,43 +1,29 @@
-import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
-public class AssignCookies {
-    static class Solution {
-        public int findContentChildren(int[] child, int[] cookie) {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-            qsort(child);
-            qsort(cookie);
+            helper(n,k,1,out,result);
 
-            int i = 0 ,j = 0;
-            for(i = 0;i <child.length && i< cookie.length;i++){
-                if(child[j]<=cookie[i]){
-                    j++;
-                }
-            }
-            return j;
+            return result;
         }
 
-        public int partition(int[] arr,int low,int high){
-            int pivot = arr[low];
-            while(low < high){
-                while( low < high && arr[high]>= pivot) --high;
-                arr[low] = arr[high];
-                while( low< high  && arr[low] <= pivot) ++low;
-                arr[high] = arr[low];
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-            arr[low] = pivot;
-            return low;
-        }
-
-        public void qsort(int arr[],int low,int high){
-            if(low < high){
-                int pivot = partition(arr,low,high);
-                qsort(arr,low,pivot-1);
-                qsort(arr,pivot+1,high);
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
-        }
-
-        public void qsort(int arr[]){
-            qsort(arr,0,arr.length-1);
         }
     }
 }

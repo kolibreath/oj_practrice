@@ -1,26 +1,29 @@
-public class MinCostClimbingStairs {
-    static class Solution {
-        public int minCostClimbingStairs(int[] cost) {
-            if(cost == null || cost.length==0){
-                return 0;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
+
+            helper(n,k,1,out,result);
+
+            return result;
+        }
+
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-
-            if(cost.length == 1)
-                return cost[0];
-
-            if(cost.length == 2)
-                return Math.min(cost[0],cost[1]);
-
-            int dp[] = new int[cost.length];
-            dp[0] = cost[0];
-            dp[1] = cost[1];
-
-            for(int i=2;i<cost.length;i++){
-                dp[i] = Math.min(dp[i-2],dp[i-1]) + cost[i];
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
-
-
-            return Math.min(dp[cost.length -1 ],dp[cost.length -2]);
         }
     }
 }

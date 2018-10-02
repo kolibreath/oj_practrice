@@ -1,41 +1,29 @@
-import betterSolution.SameTree;
-
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class BinaryTreePaths {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
-    static class Solution {
-        public List<String> binaryTreePaths(TreeNode root) {
-            if(root == null)
-                return new ArrayList<>();
-            List<String> result = new ArrayList<>();
-            createPath(root,"",result);
+            helper(n,k,1,out,result);
 
             return result;
         }
 
-        public void createPath(TreeNode root,String path,List<String> result){
-            if(root == null)
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
                 return;
-
-            if(root.left == null && root.right == null){
-                result.add(path + root.val);
             }
-            if(root.left != null)
-                createPath(root.left,path + root.val + "->" ,result);
-            if(root.right!= null)
-                createPath(root.right,path + root.val + "->" ,result);
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

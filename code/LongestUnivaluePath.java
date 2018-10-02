@@ -1,25 +1,29 @@
-public class LongestUnivaluePath {
-    class Solution {
-        private int res = 0;
-        public int longestUnivaluePath(TreeNode root) {
-            if(root == null)
-                return 0;
-            helper(root);
-            return res;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
+
+            helper(n,k,1,out,result);
+
+            return result;
         }
 
-
-        private int helper(TreeNode node ){
-            if(node ==null)
-                return 0;
-            int left = helper(node.left);
-            int right = helper(node.right);
-
-            left = node.left != null && node.val== node.left.val ? left + 1: 0;
-            right = node.right != null && node.val== node.right.val ? right + 1: 0;
-
-            res = Math.max(res,left+ right);
-            return res;
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

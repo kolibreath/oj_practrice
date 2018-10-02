@@ -1,36 +1,29 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class N_aryTreePreorderTraversal {
-    static class Node {
-        public int val;
-        public List<Node> children;
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-        public Node() {}
-
-        public Node(int _val,List<Node> _children) {
-            val = _val;
-            children = _children;
-        }
-    };
-    static class Solution {
-        public List<Integer> preorder(Node root) {
-            if(root == null)
-                return new ArrayList<>();
-            List<Integer> result = new ArrayList<>();
-            preorder(root,result);
+            helper(n,k,1,out,result);
 
             return result;
         }
 
-        public void preorder(Node root, List<Integer> list){
-            if(root == null)
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
                 return;
-            list.add(root.val);
-            if(root.children!=null)
-                for(int i=0;i<root.children.size();i++){
-                    preorder(root.children.get(i),list);
-                }
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

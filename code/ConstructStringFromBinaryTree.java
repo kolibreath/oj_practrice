@@ -1,36 +1,29 @@
-public class ConstructStringFromBinaryTree {
+import java.util.LinkedList;
+import java.util.List;
 
-    static public class TreeNode {
-        public int val;
-        public TreeNode left;
-        public TreeNode right;
-        TreeNode() { }
-    }
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-    static class Solution {
-        public String str = "";
-        public String tree2str(TreeNode t) {
-            if(t == null)
-                return new String();
+            helper(n,k,1,out,result);
 
-            constructString(t);
-
-            return str.substring(1,str.length()-1);
+            return result;
         }
 
-        //root cannot be the first one
-        public void constructString(TreeNode root){
-
-            if(root == null) {
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
                 return;
             }
-
-            str += "(" + root.val;
-            if (root.left==null && root.right!=null) str += "()";
-            constructString(root.left);
-            constructString(root.right);
-            str += ")";
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
-
 }

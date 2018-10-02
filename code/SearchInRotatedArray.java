@@ -1,51 +1,29 @@
-public class ConstructBinaryTree {
+import java.util.LinkedList;
+import java.util.List;
 
-    /**
-     * Definition for a binary tree node.
-     * public class TreeNode {
-     *     int val;
-     *     TreeNode left;
-     *     TreeNode right;
-     *     TreeNode(int x) { val = x; }
-     * }
-     */
-    class Solution {
-        public TreeNode buildTree(int[] preorder, int[] inorder) {
-            return buildTree(preorder,inorder,0,preorder.length - 1,0, inorder.length - 1);
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
+
+            helper(n,k,1,out,result);
+
+            return result;
         }
 
-        public TreeNode buildTree(int []preorder,int []inorder,int preStart,int preEnd,int inStart,int inEnd){
-
-            if(preStart > preEnd || inStart > inEnd){
-                return null;
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-
-            int rootVal = preorder[preStart];
-            int rootIndex = 0;
-            for(int i = inStart;i<=inEnd;i++){
-                if(rootVal == inorder[i]){
-                    rootIndex = i;   break;
-
-                }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
-
-            int len = rootIndex - inStart;
-            TreeNode node = new TreeNode(rootVal);
-
-            node.left = buildTree
-                    (preorder,inorder,preStart + 1, preStart + len, inStart ,rootIndex - 1);
-
-            node.right = buildTree(preorder,inorder,preStart + len + 1,preEnd,rootIndex + 1,inEnd);
-
-            return node;
         }
     }
-
-
-    public class TreeNode {
-          int val;
-          TreeNode left;
-          TreeNode right;
-          TreeNode(int x) { val = x; }
-      }
 }

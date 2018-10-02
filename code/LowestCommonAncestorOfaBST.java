@@ -1,24 +1,28 @@
-public class LowestCommonAncestorOfaBST {
+import java.util.LinkedList;
+import java.util.List;
 
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
+            helper(n,k,1,out,result);
 
-    class Solution {
-        public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-            if(root.val == p.val || root.val == q.val)
-                return root;
+            return result;
+        }
 
-            if(root.val < p.val && root.val < q.val){
-                return lowestCommonAncestor(root.right,p,q);
-            }else if(root.val > q.val && root.val > p.val){
-                return lowestCommonAncestor(root.left,p,q);
-            }else{
-                return root;
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
         }
     }

@@ -1,35 +1,29 @@
-public class ConstructBinaryTreefromInorderandPostorderTraversal {
+import java.util.LinkedList;
+import java.util.List;
 
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-   public static class TreeNode {
-       int val;
-       TreeNode left;
-       TreeNode right;
-       TreeNode(int x) { val = x; }
-   }
+            helper(n,k,1,out,result);
 
-    public TreeNode buildTree(int[] inorder, int[] postorder) {
-        return buildTree(inorder, 0, inorder.length-1, postorder, 0, postorder.length-1);
-    }
-
-    public TreeNode buildTree(int[] in, int inStart, int inEnd, int[] post, int postStart, int postEnd){
-        if(inStart > inEnd || postStart > postEnd){
-            return null;
+            return result;
         }
-        int rootVal = post[postEnd];
-        int rootIndex = 0;
-        for(int i = inStart; i <= inEnd; i++){
-            if(in[i] == rootVal){
-                rootIndex = i;
-                break;
+
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
         }
-
-        int len = rootIndex - inStart;
-        TreeNode root = new TreeNode(rootVal);
-        root.left = buildTree(in, inStart, rootIndex-1, post, postStart, postStart+len-1);
-        root.right = buildTree(in, rootIndex+1, inEnd, post, postStart+len, postEnd-1);
-
-        return root;
     }
 }

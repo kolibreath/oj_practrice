@@ -1,26 +1,29 @@
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.List;
 
-public class LongestValidParenthess {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-    static class Solution {
-        public int longestValidParentheses(String s) {
+            helper(n,k,1,out,result);
 
-            Stack<Integer> stack = new Stack<>();
-            int start = 0;
-            int max = 0;
-            for(int i=0;i<s.length();i++){
-                if(s.charAt(i)=='(')
-                    stack.push(i);
-                else {
-                    if(stack.isEmpty()){
-                        start = i + 1;
-                    }else{
-                        stack.pop();
-                        max = stack.isEmpty()?Math.max(max,i-start +1):Math.max(max,i - stack.peek());
-                    }
-                }
+            return result;
+        }
+
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-            return max;
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

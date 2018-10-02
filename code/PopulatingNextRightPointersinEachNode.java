@@ -1,46 +1,28 @@
 import java.util.LinkedList;
+import java.util.List;
 
-public class PopulatingNextRightPointersinEachNode {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-   static public class TreeLinkNode {
-        int val;
-        TreeLinkNode left, right, next;
-        TreeLinkNode(int x) { val = x; }
-    }
+            helper(n,k,1,out,result);
 
-  static   public class Solution {
-        public void connect(TreeLinkNode root) {
-            if(root == null)
-                return;
-            if(root.left== null || root.right == null){
-                return;
-            }
-
-            Bfs(root);
+            return result;
         }
 
-        private void Bfs(TreeLinkNode root){
-            LinkedList<TreeLinkNode> list = new LinkedList<>();
-            list.add(root);
-            boolean flag = true;
-            while(!list.isEmpty()&&flag){
-                int size = list.size();
-                for(int i= 0;i<size;i++){
-                    TreeLinkNode node = list.poll();
-                    if(node.left == null){
-                        flag = false;
-                        break;
-                    }
-                    list.add(node.left);
-                    list.add(node.right);
-                }
-
-                for(int i=0;i<list.size();i++){
-                    if(i == list.size() -1){
-                        break;
-                    }
-                    list.get(i).next = list.get(i+1);
-                }
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
         }
     }

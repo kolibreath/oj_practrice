@@ -1,32 +1,29 @@
-public class SymmetricTree {
+import java.util.LinkedList;
+import java.util.List;
 
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
+            helper(n,k,1,out,result);
 
-    class Solution {
-        public boolean isSymmetric(TreeNode root) {
-            if(root==null){
-                return true;
-            }
-            return compare(root.left,root.right);
+            return result;
         }
 
-        public boolean compare(TreeNode left, TreeNode right){
-            if(left ==null){
-                return right == null;
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-            if(right ==null) return false;
-
-            if(left.val != right.val){
-                return false;
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
-            return (compare(left.left,right.right)&& compare(left.right,right.left) );
-
         }
     }
 }

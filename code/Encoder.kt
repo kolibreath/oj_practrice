@@ -1,58 +1,29 @@
-import com.sun.org.apache.xml.internal.security.utils.Base64
-import sun.security.krb5.internal.crypto.Des
-import java.io.*
+import java.util.LinkedList;
+import java.util.List;
 
-fun encryptFile(src:String){
-    val desUtils = DesUtils("kolibreath")
-    val tar = src
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-    val bufferedReader = BufferedReader(FileReader(src))
+            helper(n,k,1,out,result);
 
-    val tarFile = File(tar.replace(".md","_encode.md"))
-    if(!tarFile.exists()){
-        val dir = File(tarFile.getParent())
-        dir.mkdirs()
-        tarFile.createNewFile()
+            return result;
+        }
+
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
+        }
     }
-    val bufferedWriter = BufferedWriter(FileWriter(tarFile))
-
-    for (line in bufferedReader.lines()){
-
-        val newLine = desUtils.encrypt(line)
-        bufferedWriter.write(newLine)
-        bufferedWriter.newLine()
-        bufferedWriter.flush()
-    }
-
-    //抹除源文件
-    val file = File(src)
-    file.delete()
-}
-
-
-fun decryptFile(src:String){
-    val desUtils = DesUtils("kolibreath")
-    val tar = src
-
-    val bufferedReader = BufferedReader(FileReader(src))
-
-    val tarFile = File(tar.replace("_encode.md",".md"))
-    if(!tarFile.exists()){
-        val dir = File(tarFile.getParent())
-        dir.mkdirs()
-        tarFile.createNewFile()
-    }
-    val bufferedWriter = BufferedWriter(FileWriter(tarFile))
-
-    for (line in bufferedReader.lines()){
-
-        val newLine = desUtils.decrypt(line)
-        bufferedWriter.write(newLine)
-        bufferedWriter.newLine()
-        bufferedWriter.flush()
-    }
-}
-fun main(args: Array<String>) {
-    encryptFile("/home/kolibreath/githubProject/Notes/ImCheatSheet/angryLog.md")
-    encryptFile("/home/kolibreath/githubProject/Notes/ImCheatSheet/BFsCheatSheet.md")
 }

@@ -1,70 +1,29 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class TrimABinarySearchTree {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
+            helper(n,k,1,out,result);
 
-//    static class Solution {
-//        private List<Integer> list  = new ArrayList<>();
-//        public TreeNode trimBST(TreeNode root, int L, int R) {
-//            if(root == null)
-//                return null;
-//            traverseTree(root);
-//            List<Integer> leftList = new ArrayList<>();
-//            for(int i:list){
-//                if(i<=R && i>= L)
-//                  leftList.add(i);
-//            }
-//
-//            TreeNode node = new TreeNode(leftList.get((leftList.size() -1)/2));
-//            node = constructTree(node,0,leftList.size()-1,leftList);
-//            return  node;
-//        }
-//
-//        public TreeNode constructTree(TreeNode root,int low,int high,List<Integer> list){
-//            if(low < 0 || high >= list.size() || low > high)
-//                return null;
-//
-//            int mid = (low + high)/2;
-//            root = new TreeNode(list.get(mid));
-//            root.left = constructTree(root.left,low,mid-1,list);
-//            root.right= constructTree(root.right,mid + 1, high,list);
-//
-//            return root;
-//        }
-//
-//        public void traverseTree(TreeNode root){
-//            if(root == null)
-//                return;
-//            traverseTree(root.left);
-//            list.add(root.val);
-//            traverseTree(root.right);
-//        }
-//    }
+            return result;
+        }
 
-
-    static class Solution{
-
-        public TreeNode trimBST(TreeNode root, int L, int R) {
-            if(root == null)
-                return null;
-            else if(root.val < L){
-                return trimBST(root.left,L,R);
-            }else if(root.val > R){
-                return trimBST(root.right,L,R);
-            }else{
-                root.left = trimBST(root.left,L,R);
-                root.right= trimBST(root.right,L,R);
-
-                return root;
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
         }
     }
-
 }

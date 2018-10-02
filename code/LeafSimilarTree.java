@@ -1,46 +1,29 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class LeafSimilarTree {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+            helper(n,k,1,out,result);
 
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-    class Solution {
-        public boolean leafSimilar(TreeNode root1, TreeNode root2) {
-            List<Integer> rootList1 = new ArrayList<>();
-            List<Integer> rootList2 = new ArrayList<>();
-
-            dfs(root1,rootList1);
-            dfs(root2,rootList2);
-
-            if(rootList1.size() != rootList2.size())
-                return false;
-
-            for(int i=0;i<rootList1.size() && i< rootList2.size();i++){
-                if(!rootList1.get(i).equals(rootList2.get(i)))
-                    return false;
-            }
-
-            return true;
+            return result;
         }
 
-        public void dfs(TreeNode root,List<Integer> list){
-            if(root.left == null && root.right == null) {
-                list.add(root.val);
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
                 return;
             }
-            if(root.left != null)
-                dfs(root.left,list);
-
-            if(root.right!= null)
-                dfs(root.right,list);
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

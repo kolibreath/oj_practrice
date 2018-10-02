@@ -1,34 +1,28 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class LetterCasePermutationBetterSolution {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
+            helper(n,k,1,out,result);
 
-    class Solution {
-        List<String> all;
-        public List<String> letterCasePermutation(String S) {
-            all = new ArrayList<>();
-            backtrack(S.toCharArray(), 0, "");
-            return all;
+            return result;
         }
 
-        private void backtrack(char[] ar,int index,String str){
-            if(index == ar.length){
-                all.add(str);
-            }else{
-
-                if(Character.isAlphabetic(ar[index])){
-                    char ch = ar[index];
-                    backtrack(ar,index +1 ,str + ch);
-                    if(ch <= 'z' && ch >= 'a') {
-                        ch = (char) (ch - 'a'  + 'A');
-                    }else if(ch <= 'Z' && ch >= 'A'){
-                        ch = (char) (ch - 'A' + 'a');
-                    }
-                    backtrack(ar,index + 1, str + ch);
-                }else{
-                    backtrack(ar,index +1 ,str+ar[index]);
-                }
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
         }
     }

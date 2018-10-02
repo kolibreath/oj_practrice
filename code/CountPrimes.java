@@ -1,26 +1,29 @@
-public class CountPrimes {
-    class Solution {
-        public int countPrimes(int n) {
-            if( n <= 1)
-                return 0;
-            boolean isPrime[] = new boolean[n];
-            for(int i=2;i<n;i++)
-                isPrime[i] = true;
+import java.util.LinkedList;
+import java.util.List;
 
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-            for(int i = 2;i*i<n;i++){
-                if(!isPrime[i]) continue;
-                for(int j = i*i;j<n;j+=i){
-                    isPrime[j] = false;
-                }
+            helper(n,k,1,out,result);
+
+            return result;
+        }
+
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-
-            int counter = 0;
-            for(int i=0;i<n;i++)
-                if(isPrime[i])
-                    counter ++;
-
-            return counter;
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

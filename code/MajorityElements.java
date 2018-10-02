@@ -1,34 +1,29 @@
-public class MajorityElements {
+import java.util.LinkedList;
+import java.util.List;
 
-    static class Solution {
-        public int majorityElement(int[] nums) {
-            qsort(nums);
-            return nums[nums.length/2];
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
+
+            helper(n,k,1,out,result);
+
+            return result;
         }
 
-        int partition(int nums[], int low, int high){
-            int pivot = nums[low];
-            while(low < high){
-                while(low < high && nums[high]>= pivot) high--;
-                nums[low] = nums[high];
-                while(low < high && nums[low] <= pivot) low++;
-                nums[high] = nums[low];
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-            nums[low] = pivot;
-            return  low;
-        }
-
-        void qsort(int nums[]){
-            qsort(nums,0,nums.length-1);
-        }
-
-        void qsort(int nums[], int low, int high){
-            if(low < high){
-                int p = partition(nums,low,high);
-                qsort(nums,low,p-1);
-                qsort(nums,p+1,high);
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
         }
-
     }
 }

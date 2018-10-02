@@ -1,61 +1,29 @@
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
-public class MaximumDepthofN_aryTree {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-    static class Node {
-        public int val;
-        public List<Node> children;
+            helper(n,k,1,out,result);
 
-        public Node() {
+            return result;
         }
 
-        public Node(int _val, List<Node> _children) {
-            val = _val;
-            children = _children;
-        }
-    }
-
-    ;
-
-    static class Solution {
-        Node root = new Node();
-
-        public void initFirst(Node root, int rootValue, int start, int end) {
-            List<Node> firstNodes = new ArrayList<>();
-            root.val = rootValue;
-            for (int i = start; i <= end; i++) {
-                Node node = new Node();
-                node.val = i;
-                firstNodes.add(node);
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-            root.children = firstNodes;
-        }
-
-
-        public int maxDepth(Node root) {
-            if (root == null) {
-                return 0;
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
-            Queue<Node> list = new LinkedList<>();
-
-            list.add(root);
-            int counter = 0;
-
-            while (!list.isEmpty()) {
-                counter++;
-
-                int c = list.size();
-                for (int i = 0; i < c; i++) {
-                    Node node = list.poll();
-                    for (Node n : node.children) {
-                        list.add(n);
-                    }
-                }
-            }
-            return counter;
         }
     }
 }

@@ -1,42 +1,29 @@
-public class PathSum {
+import java.util.LinkedList;
+import java.util.List;
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-        TreeNode(int x) {
-            val = x;
-        }
-    }
+            helper(n,k,1,out,result);
 
-    static class Solution{
-        public boolean hasPathSum(TreeNode root,int sum){
-            if(root == null){
-                return false;
-            }
-            boolean flags[] = new boolean[1];
-            flags[0] = false;
-            getSum(root,root.val,sum,flags);
-
-            return flags[0];
+            return result;
         }
 
-        public boolean getSum(TreeNode root,int sum,int tar,boolean flags[]){
-            if(root == null)
-                return false;
-
-            if(root.left== null && root.right ==null){
-               if( root.val + sum == tar){
-                   flags[0] = true;
-                   return true;
-               }else{
-                   return false;
-               }
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-
-            return getSum(root.left,sum+root.val,tar,flags) || getSum(root.right,sum+root.val,tar,flags);
-
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

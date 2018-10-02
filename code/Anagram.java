@@ -1,31 +1,29 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class Anagram {
+public class Combination {
    static class Solution {
-        public boolean isAnagram(String s, String t) {
-            if(s == null || t == null)
-                return false;
-            if(s.length() != t.length())
-                return false;
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-            List<Character> slist = new ArrayList<>();
+            helper(n,k,1,out,result);
 
-            for(int i =0;i<s.length();i++){
-                slist.add(s.charAt(i));
+            return result;
+        }
+
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-            for(int i=0;i<t.length();i++){
-                for(int j= 0;j<slist.size();j++){
-                    if(slist.get(j) == t.charAt(i)){
-                        slist.remove(j);
-                        break;
-                    }
-                    if(j == slist.size() -1){
-                        return false;
-                    }
-                }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
-            return  true;
         }
     }
 }

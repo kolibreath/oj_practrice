@@ -1,35 +1,29 @@
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 
-public class N_aryTreePostOrderTraversalIterative {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-    class Node {
-        public int val;
-        public List<Node> children;
+            helper(n,k,1,out,result);
 
-        public Node() {}
-
-        public Node(int _val,List<Node> _children) {
-            val = _val;
-            children = _children;
+            return result;
         }
-    };
 
-    class Solution {
-        public List<Integer> postorder(Node root) {
-            if (root == null)
-                return new ArrayList<>();
-            List<Integer> list = new ArrayList<>();
-            Stack<Node> stack = new Stack<>();
-            stack.push(root);
-
-            while (!stack.isEmpty()) {
-                Node node = stack.pop();
-                list.add(node.val);
-                for (int i = node.children.size() - 1; i >= 0; i--) {
-                    stack.push(node.children.get(i));
-                }
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-            return list;
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

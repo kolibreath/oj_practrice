@@ -1,24 +1,29 @@
-import rx.Scheduler;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
+import java.util.LinkedList;
+import java.util.List;
 
-import java.util.Observable;
-import java.util.concurrent.TimeUnit;
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-public class RxJavaTest {
+            helper(n,k,1,out,result);
 
-    public static void main(String args[]){
-        testCountDown();
-    }
+            return result;
+        }
 
-    private static void testCountDown(){
-        rx.Observable.timer(2,TimeUnit.SECONDS)
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Action1<Long>() {
-                    @Override
-                    public void call(Long aLong) {
-                        System.out.print(aLong);
-                    }
-                });
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
+        }
     }
 }

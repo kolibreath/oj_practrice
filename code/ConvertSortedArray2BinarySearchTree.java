@@ -1,32 +1,29 @@
-public class ConvertSortedArray2BinarySearchTree {
+import java.util.LinkedList;
+import java.util.List;
 
-        public static class TreeNode {
-            int val;
-            TreeNode left;
-            TreeNode right;
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-            TreeNode(int x) {
-                val = x;
+            helper(n,k,1,out,result);
+
+            return result;
+        }
+
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
         }
-
-    class Solution {
-
-        public TreeNode sortedArrayToBST(int[] nums) {
-            return sortedArray2BST(nums,0,nums.length-1);
-        }
-
-        public TreeNode sortedArray2BST(int []nums,int left,int right){
-            if(left > right) return null;
-
-            int mid =  left + (right -left )/2;
-
-            TreeNode cur = new TreeNode(nums[mid]);
-            cur.left = sortedArray2BST(nums,left,mid -1);
-            cur.right = sortedArray2BST(nums,mid + 1,right );
-
-            return cur;
-        }
     }
-
 }

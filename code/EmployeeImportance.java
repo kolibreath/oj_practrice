@@ -1,58 +1,29 @@
+import java.util.LinkedList;
 import java.util.List;
 
-public class EmployeeImportance {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-static class Employee {
-    // It's the unique id of each node;
-    // unique id of this employee
-    public int id;
-    // the importance value of this employee
-    public int importance;
-    // the id of direct subordinates
-    public List<Integer> subordinates;
-};
-    static class Solution {
-        public int getImportance(List<Employee> employees, int id) {
-            if(employees ==null || employees.size() == 0){
-                return 0;
-            }
+            helper(n,k,1,out,result);
 
-            Employee e = getEmployee(employees,id);
-            return getValue(employees,e.id);
-
+            return result;
         }
 
-        public int getValue(List<Employee> employees, int id){
-            Employee employee = getEmployee(employees,id);
-            if(employee.subordinates ==null){
-                return employee.importance;
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-            int sum = employee.importance;
-            for(int i: employee.subordinates){
-                sum += getValue(employees,i);
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
             }
-
-            return sum;
-        }
-
-        public Employee getEmployee(List<Employee> employees, int id){
-            int low = 0, high =employees.size()-1;
-
-            while(low != high){
-                if(employees.get(low).id != id){
-                    low ++;
-                }else{
-                    return employees.get(low);
-                }
-
-                if(employees.get(high).id != id){
-                    high --;
-                }else{
-                    return employees.get(high);
-                }
-            }
-
-            return employees.get(low);
         }
     }
 }

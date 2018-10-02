@@ -1,50 +1,29 @@
-public class MergeTwoBinaryTrees {
+import java.util.LinkedList;
+import java.util.List;
 
-   public class TreeNode {
-       int val;
-       TreeNode left;
-       TreeNode right;
-       TreeNode(int x) { val = x; }
-   }
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-   //这种题目很操蛋 java 不能改变参数的数值 怎么做？
-    //需要返数值
-    class Solution {
-       TreeNode merged = null;
-        public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
-            merged =  constructMergeTrees(t1,t2,merged);
+            helper(n,k,1,out,result);
 
-            return merged;
+            return result;
         }
 
-        public TreeNode constructMergeTrees(TreeNode q,TreeNode p,TreeNode merged){
-            if(q==null && p == null){
-                return merged;
-            }else if(q == null && p !=null){
-
-                merged = new TreeNode(p.val);
-                //这个点的之后的字节点也是空的，变成一个子树和空树进行合并
-                constructMergeTrees(null,p.left,merged.left);
-                constructMergeTrees(null,p.right,merged.right);
-
-            }else if(q != null && p ==null){
-                merged = new TreeNode(q.val);
-                //这个点的之后的字节点也是空的，变成一个子树和空树进行合并
-                constructMergeTrees(q.left,null,merged.left);
-                constructMergeTrees(q.right,null,merged.right);
-
-            }else if(q == null && p !=null){
-                merged = new TreeNode(p.val);
-                //这个点的之后的字节点也是空的，变成一个子树和空树进行合并
-                constructMergeTrees(null,p.left,merged.left);
-                constructMergeTrees(null,p.right,merged.right);
-            }else{
-                merged = new TreeNode(p.val + q.val);
-                constructMergeTrees(q.left,p.left,merged.left);
-                constructMergeTrees(q.right,p.right,merged.right);
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-
-            return null;
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

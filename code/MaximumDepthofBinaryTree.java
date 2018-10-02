@@ -1,43 +1,29 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class MaximumDepthofBinaryTree {
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-        TreeNode(int x) {
-            val = x;
-        }
-    }
+            helper(n,k,1,out,result);
 
-    class Solution {
-        public int maxDepth(TreeNode root) {
-            if(root == null)
-                return 0;
-
-            List<Integer> list = new ArrayList<>();
-            getMaximumDepth(root,0,list);
-            int max = list.get(0);
-            for(int i=1;i<list.size();i++)
-                if(list.get(i) > max)
-                    max = list.get(i);
-
-            return max;
-
+            return result;
         }
 
-        public void getMaximumDepth(TreeNode root, int depth,List<Integer> list){
-            depth ++;
-            if(root.left == null && root.right == null){
-                list.add(depth);
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-
-            if(root.left != null)
-                getMaximumDepth(root.left,depth,list);
-            if(root.right != null)
-                getMaximumDepth(root.right,depth,list);
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

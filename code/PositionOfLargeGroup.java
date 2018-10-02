@@ -1,39 +1,29 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
-public class PositionOfLargeGroup {
-   static  class Solution {
-        public List<List<Integer>> largeGroupPositions(String S) {
-            if(S.length() < 3)
-                return new ArrayList<>();
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-            Stack<Character> stack = new Stack<>();
+            helper(n,k,1,out,result);
 
-            List<List<Integer>> list = new ArrayList<>();
-            for(int i=0;i<S.length();i++){
-                if(stack.isEmpty()) {
-                    stack.add(S.charAt(i));
-                    continue;
-                }
-                if(stack.peek() == S.charAt(i)){
-                    stack.add(S.charAt(i));
-                }else{
-                    int size = stack.size();
-                    int start = i  - size;
-                    int end = i -1 ;
-                    stack.clear();
-                    if((end - start + 1)>=3  ) {
-                        List<Integer> l = new ArrayList<>();
-                        l.add(start);
-                        l.add(end);
-                        list.add(l);
-                    }
-                    stack.add(S.charAt(i));
-                }
+            return result;
+        }
 
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-            return list;
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

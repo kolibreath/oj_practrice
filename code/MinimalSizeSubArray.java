@@ -1,23 +1,29 @@
-public class MinimalSizeSubArray {
+import java.util.LinkedList;
+import java.util.List;
 
-    static class Solution {
-        public int minSubArrayLen(int s, int[] nums) {
-            if(nums == null || nums.length == 0)
-                return 0;
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-            int i = 0, j = 0, min = Integer.MAX_VALUE;
-            int sum = 0;
-            while (j < nums.length) {
-                sum += nums[j];
-                while (sum >= s) {
-                    sum -= nums[i];
-                    min = Math.min(min,j - i );
-                    i++;
-                }
-                j++;
-            }
-            return min == Integer.MAX_VALUE ? 0 : min + 1;
+            helper(n,k,1,out,result);
+
+            return result;
         }
 
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
+        }
     }
 }

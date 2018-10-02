@@ -1,24 +1,29 @@
-public class ClimbingStairs {
+import java.util.LinkedList;
+import java.util.List;
 
-    static class Solution {
-        public int climbStairs(int n) {
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-            if(n==1){
-                return 1;
-            }
-            if(n ==2) {
-                return 2;
-            }
+            helper(n,k,1,out,result);
 
-            int dp[] = new int[n+1];
-            dp[1] = 1;
-            dp[2] = 2;
-
-            for(int i=3;i<=n;i++){
-                dp[i] = dp[i-1]+dp[i-2];
-            }
-            return dp[n];
+            return result;
         }
 
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
+        }
     }
 }

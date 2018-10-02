@@ -1,18 +1,29 @@
-public class RemoveDuplicatesFromSortedArray {
-    class Solution {
-        public int removeDuplicates(int[] nums) {
-            if(nums == null || nums.length == 0)
-                return 0;
+import java.util.LinkedList;
+import java.util.List;
 
-            int counter = 1;
-            int cur = nums[0];
-            for(int i=1;i<nums.length;i++){
-                if(nums[i]!=cur){
-                    counter++;
-                    cur = nums[i];
-                }
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
+
+            helper(n,k,1,out,result);
+
+            return result;
+        }
+
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-            return counter;
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

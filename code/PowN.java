@@ -1,25 +1,29 @@
-public class PowN {
+import java.util.LinkedList;
+import java.util.List;
+
+public class Combination {
    static class Solution {
-        public double myPow(double x, int n) {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
-            if(x ==  0 || x == 1)
-                return x;
+            helper(n,k,1,out,result);
 
-            if(n == 0)
-                return 1;
+            return result;
+        }
 
-            if(n == 1)
-                return x;
-
-            if( n == Integer.MIN_VALUE){
-                n = -(n>>1);
-                x = 1/(x*x);
-            }else if(n < 0){
-                n = -(n);
-                x = 1/(x);
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
             }
-
-            return n%2 == 0 ? myPow(x*x,n/2) : x*myPow(x*x,n/2);
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
 }

@@ -1,46 +1,29 @@
-import java.io.*
-import com.sun.org.apache.xerces.internal.util.DOMUtil.getParent
-import java.io.File
+import java.util.LinkedList;
+import java.util.List;
 
+public class Combination {
+   static class Solution {
+        public List<List<Integer>> combine(int n, int k) {
+            List<Integer> out = new LinkedList<>();
+            List<List<Integer>> result = new LinkedList<>();
 
+            helper(n,k,1,out,result);
 
-fun diffFiles2Cp(){
-    var srcFileList = File("/home/kolibreath/githubProject/leetcode/src").list()
-    var targetFileList = File("/home/kolibreath/leetcode/code").list()
+            return result;
+        }
 
-    //srcFile == srcFilename
-        for(srcFile in srcFileList){
-
-            if(srcFile !in targetFileList){
-                var srcFullPath = "/home/kolibreath/githubProject/leetcode/src/${srcFile}"
-                var tarFullPath = "/home/kolibreath/leetcode/code/${srcFile}"
-
-                cpFile(srcFullPath,tarFullPath)
+        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
+            if(out.size() == k){
+                List<Integer> cur = new LinkedList<>(out);
+                result.add(cur);
+                return;
+            }
+            for(int i = level;i<=n;i++){
+                out.add(i);
+                helper(n,k,i+1,out,result);
+                Integer o = i;
+                out.remove(o);
+            }
         }
     }
-
-}
-
-fun cpFile(src:String, tar:String){
-    var bufferedReader = BufferedReader(FileReader(src))
-
-    var tarFile = File(tar)
-    if(!tarFile.exists()){
-        val dir = File(tarFile.getParent())
-        dir.mkdirs()
-        tarFile.createNewFile()
-    }
-    var bufferedWriter = BufferedWriter(FileWriter(tarFile))
-
-    for (line in bufferedReader.lines()){
-
-        bufferedWriter.write(line)
-        bufferedWriter.newLine()
-        bufferedWriter.flush()
-    }
-
-}
-
-fun main(args:Array<String>){
-    diffFiles2Cp()
 }
