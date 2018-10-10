@@ -1,29 +1,36 @@
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-public class Combination {
-   static class Solution {
-        public List<List<Integer>> combine(int n, int k) {
-            List<Integer> out = new LinkedList<>();
-            List<List<Integer>> result = new LinkedList<>();
+public class RemoveDuplicatesFromLinkedListII {
 
-            helper(n,k,1,out,result);
-
-            return result;
-        }
-
-        void helper(int n, int k, int level, List<Integer> out, List<List<Integer>> result){
-            if(out.size() == k){
-                List<Integer> cur = new LinkedList<>(out);
-                result.add(cur);
-                return;
-            }
-            for(int i = level;i<=n;i++){
-                out.add(i);
-                helper(n,k,i+1,out,result);
-                Integer o = i;
-                out.remove(o);
-            }
-        }
+    public static class ListNode {
+        int val;
+        ListNode next;
+       public  ListNode(int x) { val = x; }
     }
+
+    static class Solution {
+        boolean flag = false;
+
+        public ListNode deleteDuplicates(ListNode empty) {
+            ListNode head = new ListNode(Integer.MAX_VALUE);
+            head = empty;
+            Set<Integer> set = new HashSet<>();
+            Set<Integer> duplicates = new HashSet<>();
+
+            while(head.next !=null){
+                if(!set.contains(head.val)){
+                    set.add(head.val);
+                }else{
+                    duplicates.add(head.val);
+                }
+                head = head.next;
+            }
+            return head;
+        }
+
+    }
+
 }
