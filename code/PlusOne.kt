@@ -1,36 +1,30 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*
 
-public class RemoveDuplicatesFromLinkedListII {
+class SolutionPlusOne {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+    var a = IntArray(3,{0})
 
-    static class Solution {
-        boolean flag = false;
+    fun plusOne(digits: IntArray): IntArray {
+        if(digits == null || digits.size == 0 )
+            return IntArray(0)
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
 
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+        var value = 0
+        var time  = 1
+        for (i in digits.indices.reversed()) {
+            value += digits[i]*time
+            time *= 10
         }
 
-    }
+        value += 1
 
+        val list = ArrayList<Int>()
+        while(value >0){
+            list.add(value%10)
+            value /= 10
+        }
+        list.reverse()
+
+        return list.toIntArray()
+    }
 }

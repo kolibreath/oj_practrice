@@ -1,36 +1,39 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.Stack;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class PositionOfLargeGroup {
+   static  class Solution {
+        public List<List<Integer>> largeGroupPositions(String S) {
+            if(S.length() < 3)
+                return new ArrayList<>();
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+            Stack<Character> stack = new Stack<>();
 
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+            List<List<Integer>> list = new ArrayList<>();
+            for(int i=0;i<S.length();i++){
+                if(stack.isEmpty()) {
+                    stack.add(S.charAt(i));
+                    continue;
                 }
-                head = head.next;
+                if(stack.peek() == S.charAt(i)){
+                    stack.add(S.charAt(i));
+                }else{
+                    int size = stack.size();
+                    int start = i  - size;
+                    int end = i -1 ;
+                    stack.clear();
+                    if((end - start + 1)>=3  ) {
+                        List<Integer> l = new ArrayList<>();
+                        l.add(start);
+                        l.add(end);
+                        list.add(l);
+                    }
+                    stack.add(S.charAt(i));
+                }
+
             }
-            return head;
+            return list;
         }
-
     }
-
 }

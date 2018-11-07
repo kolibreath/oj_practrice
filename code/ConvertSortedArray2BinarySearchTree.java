@@ -1,36 +1,32 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class ConvertSortedArray2BinarySearchTree {
 
-public class RemoveDuplicatesFromLinkedListII {
+        public static class TreeNode {
+            int val;
+            TreeNode left;
+            TreeNode right;
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+            TreeNode(int x) {
+                val = x;
             }
-            return head;
         }
 
+    class Solution {
+
+        public TreeNode sortedArrayToBST(int[] nums) {
+            return sortedArray2BST(nums,0,nums.length-1);
+        }
+
+        public TreeNode sortedArray2BST(int []nums,int left,int right){
+            if(left > right) return null;
+
+            int mid =  left + (right -left )/2;
+
+            TreeNode cur = new TreeNode(nums[mid]);
+            cur.left = sortedArray2BST(nums,left,mid -1);
+            cur.right = sortedArray2BST(nums,mid + 1,right );
+
+            return cur;
+        }
     }
 
 }

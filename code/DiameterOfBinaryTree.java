@@ -1,36 +1,46 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class DiameterOfBinaryTree {
 
-public class RemoveDuplicatesFromLinkedListII {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+     public static class TreeNode {
+         int val;
+         TreeNode left;
+         TreeNode right;
+         TreeNode(int x) { val = x; }
+     }
 
-    static class Solution {
-        boolean flag = false;
+    static class  Solution {
+        public int diameterOfBinaryTree(TreeNode root) {
+            if (root == null)
+                return 0;
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
+            if (root.left == null && root.right == null)
+                return 1;
 
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+            int left = 0;
+            if (root.left.left == null && root.left.right == null) {
+                left = 0;
+            } else {
+                left = getHeight(root.left, 0);
+                ;
             }
-            return head;
+
+            int right = 0;
+            if (root.right.left == null && root.right.right == null) {
+                right = 0;
+            } else {
+                right = getHeight(root.right, 0);
+                ;
+            }
+
+            return left + right + 1;
+
         }
 
-    }
+        public int getHeight(TreeNode root, int height) {
+            if (root == null)
+                return height;
 
+            return Math.max(getHeight(root.left, height + 1), getHeight(root.right, height + 1));
+        }
+    }
 }

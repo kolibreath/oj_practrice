@@ -1,36 +1,24 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+public class ClimbingStairs {
 
     static class Solution {
-        boolean flag = false;
+        public int climbStairs(int n) {
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+            if(n==1){
+                return 1;
             }
-            return head;
+            if(n ==2) {
+                return 2;
+            }
+
+            int dp[] = new int[n+1];
+            dp[1] = 1;
+            dp[2] = 2;
+
+            for(int i=3;i<=n;i++){
+                dp[i] = dp[i-1]+dp[i-2];
+            }
+            return dp[n];
         }
 
     }
-
 }

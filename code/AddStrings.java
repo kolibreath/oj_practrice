@@ -1,36 +1,31 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
+public class AddStrings {
     static class Solution {
-        boolean flag = false;
+        public String addStrings(String num1, String num2) {
+            int p1 = num1.length(), p2 = num2.length();
+            int max = p1 >= p2 ? p1 :p2;
+            int result [] = new int[max + 1];
+            int forward = 0;
+            for(int i = num1.length() -1 ,j = num2.length() -1 ; i>=0 || j>=0|| forward ==1;i--,j-- ){
+                int a = i<0 ? 0 : num1.charAt(i) - '0';
+                int b = j<0 ? 0 : num2.charAt(j) - '0';
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+                result[max--] = (a + b + forward) %10;
+                forward = (a + b + forward)/10;
             }
-            return head;
+
+            String str = "";
+            boolean flag = true;
+            for(int i : result){
+                if(i == 0 && flag){
+                    continue;
+                }else{
+                    flag = false;
+                    str += i;
+
+                }
+            }
+
+            return str.length() == 0? "0" : str;
         }
-
     }
-
 }

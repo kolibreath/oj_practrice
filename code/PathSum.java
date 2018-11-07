@@ -1,36 +1,46 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class PathSum {
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
+    public static class TreeNode {
         int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+    static class Solution{
+        public boolean hasPathSum(TreeNode root,int sum){
+            if(root == null){
+                return false;
             }
-            return head;
+            boolean flags[] = new boolean[1];
+            flags[0] = false;
+            getSum(root,root.val,sum,flags);
+
+            return flags[0];
         }
 
-    }
+        public void getSum(TreeNode root,int sum,int tar,boolean flags[]){
+            if(root == null)
+                return;
 
+            if(root.left== null && root.right ==null){
+               if(  sum == tar){
+                   flags[0] = true;
+                   return;
+               }else{
+                   return;
+               }
+            }
+
+            if(root.left !=null)
+                getSum(root.left, sum+root.left.val,tar,flags);
+
+            if(root.right != null)
+                getSum(root.right,sum+root.right.val,tar,flags);
+
+        }
+    }
 }

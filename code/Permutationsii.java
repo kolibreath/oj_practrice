@@ -1,36 +1,42 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class Permutationsii {
+   static class Solution {
+        public List<List<Integer>> permuteUnique(int[] nums) {
+            if(nums.length == 0 || nums == null) return new ArrayList<>();
+            Arrays.sort(nums);
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+            Set<List<Integer>> list = new HashSet<>();
 
-    static class Solution {
-        boolean flag = false;
+            permutations(list,0,nums);
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+            List<List<Integer>> l = new ArrayList<>(list);
+            return l;
         }
 
-    }
+        public void permutations(Set<List<Integer>> list, int start,int nums[]){
+            if(start >= nums.length) {
+                list.add(converter(nums));
+                return;
+            }
+            for(int i = start;i<nums.length;i++){
+                swap(nums,i,start);
+                permutations(list,start+1,nums);
+                swap(nums,i,start);
+            }
+        }
 
+        public List<Integer> converter(int nums[]){
+            List<Integer> list= new ArrayList<>();
+            for(int i : nums)
+                list.add(i);
+            return list;
+        }
+
+        public void swap(int nums[],int index1,int index2 ){
+            int temp = nums[index1];
+            nums[index1] = nums[index2];
+            nums[index2] = temp;
+        }
+   }
 }

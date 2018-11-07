@@ -1,36 +1,24 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class FindFirstandLastPositionofElementinSortedArray {
+   static public class Solution {
+       public int[] searchRange(int[] A, int target) {
+           int start = Solution.firstGreaterEqual(A, target);
+           if (start == A.length || A[start] != target) {
+               return new int[]{-1, -1};
+           }
+           return new int[]{start, Solution.firstGreaterEqual(A, target + 1) - 1};
+       }
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
-        }
-
-    }
-
+       public  static int firstGreaterEqual(int numbers[], int target) {
+           int low = 0, high = numbers.length;
+           while (low < high) {
+               int mid = low + ((high - low) >> 1);
+               if (numbers[mid] < target) {
+                   low = mid + 1;
+               } else {
+                   high = mid;
+               }
+           }
+           return low;
+       }
+   }
 }

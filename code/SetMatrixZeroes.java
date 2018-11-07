@@ -1,36 +1,53 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class SetMatrixZeroes{
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+    int nums[][] = new int[][]{
+            {1,1,1},
+            {1,0,1},
+            {1,1,1}
+    };
 
     static class Solution {
-        boolean flag = false;
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
+        public void setZeroes(int[][] matrix) {
 
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+            if(matrix.length ==0 || matrix[0].length ==0 || matrix ==null)
+                return;
+
+            int singleWidth = matrix[0].length;
+            int matrixWidth = matrix.length;
+
+            List<Integer> listH = new ArrayList<>();
+            List<Integer> listV = new ArrayList<>();
+            for(int i=0;i<matrixWidth;i++){
+                for(int j=0;j<singleWidth;j++){
+                    if(matrix[i][j] == 0){
+                        if(!listH.contains(i)){
+                            listH.add(i);
+                        }
+                        if(!listV.contains(j)){
+                            listV.add(j);
+                        }
+
+                    }
                 }
-                head = head.next;
             }
-            return head;
+            for(int x:listH){
+                for(int y = 0;y<singleWidth;y++){
+                    matrix[x][y] = 0;
+                }
+            }
+
+            for(int y:listV){
+                for(int x = 0;x<matrixWidth;x++){
+                    matrix[x][y] = 0;
+                }
+            }
+
         }
 
     }
-
 }

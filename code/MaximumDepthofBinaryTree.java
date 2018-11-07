@@ -1,36 +1,43 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
+public class MaximumDepthofBinaryTree {
+    public static class TreeNode {
         int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 
-    static class Solution {
-        boolean flag = false;
+    class Solution {
+        public int maxDepth(TreeNode root) {
+            if(root == null)
+                return 0;
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
+            List<Integer> list = new ArrayList<>();
+            getMaximumDepth(root,0,list);
+            int max = list.get(0);
+            for(int i=1;i<list.size();i++)
+                if(list.get(i) > max)
+                    max = list.get(i);
 
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+            return max;
+
         }
 
-    }
+        public void getMaximumDepth(TreeNode root, int depth,List<Integer> list){
+            depth ++;
+            if(root.left == null && root.right == null){
+                list.add(depth);
+            }
 
+            if(root.left != null)
+                getMaximumDepth(root.left,depth,list);
+            if(root.right != null)
+                getMaximumDepth(root.right,depth,list);
+        }
+    }
 }

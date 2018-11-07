@@ -1,36 +1,30 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class InvertBinaryTree {
 
-public class RemoveDuplicatesFromLinkedListII {
 
-    public static class ListNode {
+    public class TreeNode {
         int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
     }
 
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+    class Solution {
+        public TreeNode invertTree(TreeNode root) {
+         helper(root);
+         return root;
         }
 
-    }
+        public void helper(TreeNode root){
+            if(root== null)
+                return ;
 
+            TreeNode node = new TreeNode(root.val);
+            node = root.left;
+            root.left = root.right;
+            root.right = node;
+
+            helper(root.left);
+            helper(root.right);
+        }
+    }
 }

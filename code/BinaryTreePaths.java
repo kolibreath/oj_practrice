@@ -1,36 +1,39 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class BinaryTreePaths {
 
-    public static class ListNode {
+    public static class TreeNode {
         int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 
     static class Solution {
-        boolean flag = false;
+        public List<String> binaryTreePaths(TreeNode root) {
+            if(root == null)
+                return new ArrayList<>();
+            List<String> result = new ArrayList<>();
+            createPath(root,"",result);
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+            return result;
         }
 
-    }
+        public void createPath(TreeNode root,String path,List<String> result){
+            if(root == null)
+                return;
 
+            if(root.left == null && root.right == null){
+                result.add(path + root.val);
+            }
+            if(root.left != null)
+                createPath(root.left,path + root.val + "->" ,result);
+            if(root.right!= null)
+                createPath(root.right,path + root.val + "->" ,result);
+        }
+    }
 }

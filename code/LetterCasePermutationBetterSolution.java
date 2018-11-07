@@ -1,36 +1,35 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class LetterCasePermutationBetterSolution {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
 
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+    class Solution {
+        List<String> all;
+        public List<String> letterCasePermutation(String S) {
+            all = new ArrayList<>();
+            backtrack(S.toCharArray(), 0, "");
+            return all;
         }
 
-    }
+        private void backtrack(char[] ar,int index,String str){
+            if(index == ar.length){
+                all.add(str);
+            }else{
 
+                if(Character.isAlphabetic(ar[index])){
+                    char ch = ar[index];
+                    backtrack(ar,index +1 ,str + ch);
+                    if(ch <= 'z' && ch >= 'a') {
+                        ch = (char) (ch - 'a'  + 'A');
+                    }else if(ch <= 'Z' && ch >= 'A'){
+                        ch = (char) (ch - 'A' + 'a');
+                    }
+                    backtrack(ar,index + 1, str + ch);
+                }else{
+                    backtrack(ar,index +1 ,str+ar[index]);
+                }
+            }
+        }
+    }
 }

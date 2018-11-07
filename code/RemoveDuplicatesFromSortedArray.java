@@ -1,36 +1,18 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class RemoveDuplicatesFromSortedArray {
+    class Solution {
+        public int removeDuplicates(int[] nums) {
+            if(nums == null || nums.length == 0)
+                return 0;
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+            int counter = 1;
+            int cur = nums[0];
+            for(int i=1;i<nums.length;i++){
+                if(nums[i]!=cur){
+                    counter++;
+                    cur = nums[i];
                 }
-                head = head.next;
             }
-            return head;
+            return counter;
         }
-
     }
-
 }

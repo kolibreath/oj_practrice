@@ -1,36 +1,14 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.Arrays;
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+public class MissingNumber {
+    class Solution {
+        public int missingNumber(int[] nums) {
+            Arrays.sort(nums);
+            for(int i=0;i<nums.length;i++){
+                if(i != nums[i])
+                    return i;
             }
-            return head;
+            return nums.length;
         }
-
     }
-
 }

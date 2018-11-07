@@ -1,36 +1,21 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
+public class TwoSumii {
     static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+        public int[] twoSum(int[] numbers, int target) {
+            if(numbers.length ==0 || numbers ==null){
+                return new int[0];
             }
-            return head;
+
+            int low = 0, high = numbers.length -1;
+            while(low<high){
+                if(numbers[low]+ numbers[high] == target)
+                    break;
+                else if(numbers[low] + numbers[high] > target)
+                    high --;
+                else{
+                    low ++;
+                }
+            }
+            return new int[]{++low , ++high};
         }
-
     }
-
 }

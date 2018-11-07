@@ -1,36 +1,38 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class ConvertBSTtoGreaterTree {
 
-    public static class ListNode {
+    public static class TreeNode {
         int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 
     static class Solution {
-        boolean flag = false;
+        public TreeNode convertBST(TreeNode root) {
+            if (root == null)
+                return null;
+            int sum[] = new int[1];
+            sum[0] = 0;
+            helper(root, sum);
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+            return root;
         }
 
-    }
+        public void helper(TreeNode root, int[] sum) {
+            if (root == null)
+                return;
 
+            helper(root.right, sum);
+            sum[0] = sum[0] + root.val;
+            root.val = sum[0];
+            helper(root.left, sum);
+        }
+    }
 }

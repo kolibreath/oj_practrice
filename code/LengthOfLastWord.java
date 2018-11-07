@@ -1,36 +1,16 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.Scanner;
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
+public class LengthOfLastWord {
     static class Solution {
-        boolean flag = false;
+        public int lengthOfLastWord(String s) {
+            if(s == null || s.length() == 0 )
+                return 0;
+            int length = 0;
+            Scanner scanner = new Scanner(s);
+            while (scanner.hasNext())
+                length = scanner.next().length();
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+            return length;
         }
-
     }
-
 }

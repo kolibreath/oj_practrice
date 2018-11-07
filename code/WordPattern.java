@@ -1,36 +1,18 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+public class WordPattern {
+    class Solution {
+        public  boolean wordPattern(String pattern, String str) {
+            String[] words = str.split(" ");  //分割开str这个字符串
+            if (words.length != pattern.length())  //如果长度不同，明显不符合题意，返回false
+                return false;
+            Map index = new HashMap();  //用map的解释见下边的分析
+            for (Integer i = 0; i < words.length; ++i)
+                if (index.put(pattern.charAt(i), i) != index.put(words[i], i))
+                    return false;
+            return true;
         }
 
     }
-
 }

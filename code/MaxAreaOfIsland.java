@@ -1,36 +1,24 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class MaxAreaOfIsland {
+    class Solution {
+        public int maxAreaOfIsland(int[][] grid) {
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+            int maxArea = 0;
+            for(int i=0;i<grid.length;i++){
+                for(int j =0;j<grid[0].length;j++){
+                    maxArea = Math.max(getMax(grid,i,j),maxArea);
                 }
-                head = head.next;
             }
-            return head;
+            return maxArea;
         }
 
-    }
+        public int getMax(int [][]grid,int i,int j){
+            if( i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == 0)
+                return 0;
 
+            int max = 1;
+            grid[i][j] = 0;
+            max = max + getMax(grid,i+1,j) + getMax(grid,i-1,j) + getMax(grid,i,j+1) +getMax(grid,i,j-1);
+            return max;
+        }
+    }
 }

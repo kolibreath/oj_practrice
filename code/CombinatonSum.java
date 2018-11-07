@@ -1,36 +1,34 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+public class CombinatonSum {
+       static   class Solution {
+            public List<List<Integer>> combinationSum(int[] candidates, int target) {
+                if(candidates == null || candidates.length == 0)
+                    return new ArrayList<>();
+                List<List<Integer>> list=  new ArrayList<>();
+                List<Integer> tempList  = new ArrayList<>();
+                Arrays.sort(candidates);
+                getCombination(list,tempList,candidates,target,0);
+                return list;
             }
-            return head;
+
+            public void getCombination(List<List<Integer>> list, List<Integer> tempList,
+                                       int[] c,int remain,int start){
+                if(remain < 0)
+                    return;
+                else  if(remain == 0)
+                    list.add(new ArrayList<>(tempList));
+                else {
+                    for (int i = start; i < c.length; i++) {
+                        if( i > start && c[i] == c[i-1])
+                            continue;
+                        tempList.add(c[i]);
+                        getCombination(list, tempList, c, remain - c[i], i+1);
+                        tempList.remove(tempList.size() - 1);
+                    }
+                }
+            }
         }
-
-    }
-
 }

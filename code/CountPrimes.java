@@ -1,36 +1,26 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class CountPrimes {
+    class Solution {
+        public int countPrimes(int n) {
+            if( n <= 1)
+                return 0;
+            boolean isPrime[] = new boolean[n];
+            for(int i=2;i<n;i++)
+                isPrime[i] = true;
 
-public class RemoveDuplicatesFromLinkedListII {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+            for(int i = 2;i*i<n;i++){
+                if(!isPrime[i]) continue;
+                for(int j = i*i;j<n;j+=i){
+                    isPrime[j] = false;
                 }
-                head = head.next;
             }
-            return head;
+
+            int counter = 0;
+            for(int i=0;i<n;i++)
+                if(isPrime[i])
+                    counter ++;
+
+            return counter;
         }
-
     }
-
 }

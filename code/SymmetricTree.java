@@ -1,36 +1,32 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class SymmetricTree {
 
-public class RemoveDuplicatesFromLinkedListII {
 
-    public static class ListNode {
+    public class TreeNode {
         int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
     }
 
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+    class Solution {
+        public boolean isSymmetric(TreeNode root) {
+            if(root==null){
+                return true;
             }
-            return head;
+            return compare(root.left,root.right);
         }
 
-    }
+        public boolean compare(TreeNode left, TreeNode right){
+            if(left ==null){
+                return right == null;
+            }
+            if(right ==null) return false;
 
+            if(left.val != right.val){
+                return false;
+            }
+            return (compare(left.left,right.right)&& compare(left.right,right.left) );
+
+        }
+    }
 }

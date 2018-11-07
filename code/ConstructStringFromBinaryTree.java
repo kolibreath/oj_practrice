@@ -1,36 +1,35 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class ConstructStringFromBinaryTree {
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
+    static public class TreeNode {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+        TreeNode() { }
     }
 
     static class Solution {
-        boolean flag = false;
+        public String str = "";
+        public String tree2str(TreeNode t) {
+            if(t == null)
+                return new String();
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
+            constructString(t);
 
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+            return str.substring(1,str.length()-1);
         }
 
+        //root cannot be the first one
+        public void constructString(TreeNode root){
+
+            if(root == null) {
+                return;
+            }
+
+            str += "(" + root.val;
+            constructString(root.left);
+            constructString(root.right);
+            str += ")";
+        }
     }
 
 }

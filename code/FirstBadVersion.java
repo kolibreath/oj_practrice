@@ -1,36 +1,40 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class FirstBadVersion {
 
-public class RemoveDuplicatesFromLinkedListII {
+    /* The isBadVersion API is defined in the parent class VersionControl.
+      boolean isBadVersion(int version); */
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
 
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+    static class VersionControl{
+        int version = 4;
+        boolean isBadVersion(int version){
+            if(version>=this.version)
+                 return true;
+            else
+                return false;
         }
-
     }
 
+    public static class Solution extends VersionControl {
+
+        public int firstBadVersion(int n) {
+
+            if ( n <= 0)
+                return 0;
+
+            int low = 1;
+            int high = n;
+
+            int mid = 0;
+            while(low < high){
+                mid = low + (- low + high)/2;
+                if(isBadVersion(mid)){
+                   high = mid;
+                }else{
+                    low = mid + 1;
+                }
+            }
+
+            return low ;
+        }
+    }
 }

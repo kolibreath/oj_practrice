@@ -1,36 +1,25 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class PowN {
+   static class Solution {
+        public double myPow(double x, int n) {
 
-public class RemoveDuplicatesFromLinkedListII {
+            if(x ==  0 || x == 1)
+                return x;
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+            if(n == 0)
+                return 1;
 
-    static class Solution {
-        boolean flag = false;
+            if(n == 1)
+                return x;
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+            if( n == Integer.MIN_VALUE){
+                n = -(n>>1);
+                x = 1/(x*x);
+            }else if(n < 0){
+                n = -(n);
+                x = 1/(x);
             }
-            return head;
+
+            return n%2 == 0 ? myPow(x*x,n/2) : x*myPow(x*x,n/2);
         }
-
     }
-
 }

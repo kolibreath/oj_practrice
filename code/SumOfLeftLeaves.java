@@ -1,36 +1,43 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class SumOfLeftLeaves {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
 
-    static class Solution {
-        boolean flag = false;
+   public class TreeNode {
+       int val;
+       TreeNode left;
+       TreeNode right;
+       TreeNode(int x) { val = x; }
+   }
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
+    class Solution {
+        public int sumOfLeftLeaves(TreeNode root) {
+            if(root == null)
+                return 0;
 
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+            List<Integer> list = new ArrayList<>();
+            helper(root,list,true);
+
+            int sum = 0;
+
+            for(int i : list){
+                sum += i;
             }
-            return head;
+
+            return sum;
         }
 
+        public void helper(TreeNode root, List<Integer> list,boolean left){
+            if(root.left == null && root.right == null && left){
+                list.add(root.val);
+            }
+
+            if(root.left != null)
+                helper(root.left,list,true);
+            if(root.right  != null)
+                helper(root.right,list,false);
+        }
     }
 
 }

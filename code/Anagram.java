@@ -1,36 +1,31 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class Anagram {
+   static class Solution {
+        public boolean isAnagram(String s, String t) {
+            if(s == null || t == null)
+                return false;
+            if(s.length() != t.length())
+                return false;
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+            List<Character> slist = new ArrayList<>();
 
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+            for(int i =0;i<s.length();i++){
+                slist.add(s.charAt(i));
             }
-            return head;
+            for(int i=0;i<t.length();i++){
+                for(int j= 0;j<slist.size();j++){
+                    if(slist.get(j) == t.charAt(i)){
+                        slist.remove(j);
+                        break;
+                    }
+                    if(j == slist.size() -1){
+                        return false;
+                    }
+                }
+            }
+            return  true;
         }
-
     }
-
 }

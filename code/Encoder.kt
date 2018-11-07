@@ -1,36 +1,58 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import com.sun.org.apache.xml.internal.security.utils.Base64
+import sun.security.krb5.internal.crypto.Des
+import java.io.*
 
-public class RemoveDuplicatesFromLinkedListII {
+fun encryptFile(src:String){
+    val desUtils = DesUtils("kolibreath")
+    val tar = src
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
+    val bufferedReader = BufferedReader(FileReader(src))
+
+    val tarFile = File(tar.replace(".md","_encode.md"))
+    if(!tarFile.exists()){
+        val dir = File(tarFile.getParent())
+        dir.mkdirs()
+        tarFile.createNewFile()
+    }
+    val bufferedWriter = BufferedWriter(FileWriter(tarFile))
+
+    for (line in bufferedReader.lines()){
+
+        val newLine = desUtils.encrypt(line)
+        bufferedWriter.write(newLine)
+        bufferedWriter.newLine()
+        bufferedWriter.flush()
     }
 
-    static class Solution {
-        boolean flag = false;
+    //抹除源文件
+    val file = File(src)
+    file.delete()
+}
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
 
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
-        }
+fun decryptFile(src:String){
+    val desUtils = DesUtils("kolibreath")
+    val tar = src
 
+    val bufferedReader = BufferedReader(FileReader(src))
+
+    val tarFile = File(tar.replace("_encode.md",".md"))
+    if(!tarFile.exists()){
+        val dir = File(tarFile.getParent())
+        dir.mkdirs()
+        tarFile.createNewFile()
     }
+    val bufferedWriter = BufferedWriter(FileWriter(tarFile))
 
+    for (line in bufferedReader.lines()){
+
+        val newLine = desUtils.decrypt(line)
+        bufferedWriter.write(newLine)
+        bufferedWriter.newLine()
+        bufferedWriter.flush()
+    }
+}
+fun main(args: Array<String>) {
+    decryptFile("/home/kolibreath/githubProject/Notes/ImCheatSheet/angryLog_encode.md")
+    decryptFile("/home/kolibreath/githubProject/Notes/ImCheatSheet/BFsCheatSheet_encode.md")
 }

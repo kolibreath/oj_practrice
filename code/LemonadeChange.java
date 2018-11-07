@@ -1,36 +1,33 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+public class LemonadeChange {
 
     static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+        public boolean lemonadeChange(int[] bills) {
+            int fiveChange = 0;
+            int tenChange = 0;
+            for(int bill : bills){
+                switch(bill){
+                    case 5:
+                        fiveChange++;
+                        break;
+                    case 10:
+                        if(fiveChange == 0)
+                            return false;
+                        fiveChange--;
+                        tenChange++;
+                        break;
+                    case 20:
+                        if(fiveChange!=0 && tenChange != 0) {
+                            fiveChange--;
+                            tenChange--;
+                        }else if(fiveChange > 2){
+                            fiveChange = fiveChange -3;
+                        }else{
+                            return false;
+                        }
+                        break;
                 }
-                head = head.next;
             }
-            return head;
+            return true;
         }
-
     }
-
 }

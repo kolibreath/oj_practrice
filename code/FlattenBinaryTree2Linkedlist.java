@@ -8,15 +8,35 @@ public class FlattenBinaryTree2Linkedlist {
             traverseAdd(root,list);
 
             if(root == null)
-                return;
+                return ;
 
             if(root.right==null && root.left ==null)
-                return;
+                return ;
+
             TreeNode pointer = root;
             for(int i =1;i<list.size();i++){
-                pointer.right = list.get(i);
+                TreeNode cp  = new TreeNode(list.get(i).val);
+                pointer.right = cp;
                 pointer = pointer.right;
             }
+
+            clearNode(root.left);
+
+            root.left = null;
+        }
+
+        void clearNode(TreeNode node){
+            if(node == null)
+                return;
+
+            TreeNode left=  node.left;
+            TreeNode right = node.right;
+
+            clearNode(left);
+            clearNode(right);
+
+            node.left = null;
+            node.right = null;
         }
 
         void traverseAdd(TreeNode root, LinkedList<TreeNode> list){

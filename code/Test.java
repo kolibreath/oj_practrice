@@ -1,18 +1,19 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Test {
 
     public static void main(String args[]){
-        List<TreeNode> list = new LinkedList<>();
-        TreeNode cur = new TreeNode(10);
-        list.add(cur);
-        cur=null;
-        TreeNode cur2 = list.get(0);
+        List<String> list = new ArrayList<>();
+        fun(list);
+        System.out.println(list.size());
+    }
 
-        TreeNode s =new TreeNode(1);
-        TreeNode s1 = s;
-        s = null;
-        System.out.print(s1);
+    private static void fun(List<String> list){
+        if(list.size()> 5)
+            return;
+        list.add(new String());
+        fun(list);
     }
 }

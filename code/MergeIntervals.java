@@ -1,36 +1,47 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class MergeIntervals {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
+    public static class Interval {
+        int start;
+        int end;
+
+        Interval() {
+            start = 0;
+            end = 0;
+        }
+
+        Interval(int s, int e) {
+            start = s;
+            end = e;
+        }
     }
 
     static class Solution {
-        boolean flag = false;
+        public List<Interval> merge(List<Interval> intervals) {
+            if (intervals == null)
+                return new ArrayList<>();
+            if (intervals.size() == 1)
+                return intervals;
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+            List<Interval> result = new ArrayList<>();
+            intervals.sort(Comparator.comparingInt(interval -> interval.start));
+            int start = intervals.get(0).start, end = intervals.get(0).end;
+            for (Interval interval : intervals) {
+                if (end >= interval.start) {
+                    end = Math.max(end, interval.end);
+                } else {
+                    result.add(new Interval(start, end));
+                    start = interval.start;
+                    end = interval.end;
                 }
-                head = head.next;
             }
-            return head;
+
+            result.add(new Interval(start, end));
+            return result;
         }
-
     }
-
 }

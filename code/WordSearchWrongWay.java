@@ -1,36 +1,29 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class WordSearchWrongWay {
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
+    //this way is completely wrong ignoring adjacent
     static class Solution {
-        boolean flag = false;
+        public boolean exist(char[][] board, String word) {
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
+            if(board ==null || board.length ==0 || board[0].length ==0)
+                return false;
 
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+            int flatBoard[] = new int[100];
+            for(int i=0;i<board.length;i++){
+                for(int j=0;j<board[0].length;j++){
+                    flatBoard[board[i][j] - 48]++;
                 }
-                head = head.next;
             }
-            return head;
-        }
 
+            boolean flag = true;
+            for (int i= 0;i<word.length();i++){
+                    flatBoard[word.charAt(i) - 48]--;
+                    if(flatBoard[word.charAt(i) - 48]<0){
+                        flag = false;
+                        break;
+                }
+            }
+            return flag;
+        }
     }
 
 }

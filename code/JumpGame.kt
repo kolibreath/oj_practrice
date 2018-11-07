@@ -1,36 +1,17 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+class SolutionCanJump    {
+    fun canJump(A: IntArray): Boolean {
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+        if(A==null || A.size ==0 ){
+            return false
+        }
+        var reach = 0
+        for(i in 0 until A.size){
+            reach = Math.max(reach , i+A[i])
         }
 
+        if(reach < A.size -1)
+            return false
+        return true
     }
 
 }

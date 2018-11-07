@@ -1,36 +1,46 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class LeafSimilarTree {
 
-    public static class ListNode {
+    public static class TreeNode {
         int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
+    class Solution {
+        public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+            List<Integer> rootList1 = new ArrayList<>();
+            List<Integer> rootList2 = new ArrayList<>();
 
-    static class Solution {
-        boolean flag = false;
+            dfs(root1,rootList1);
+            dfs(root2,rootList2);
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
+            if(rootList1.size() != rootList2.size())
+                return false;
 
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+            for(int i=0;i<rootList1.size() && i< rootList2.size();i++){
+                if(!rootList1.get(i).equals(rootList2.get(i)))
+                    return false;
             }
-            return head;
+
+            return true;
         }
 
-    }
+        public void dfs(TreeNode root,List<Integer> list){
+            if(root.left == null && root.right == null) {
+                list.add(root.val);
+                return;
+            }
+            if(root.left != null)
+                dfs(root.left,list);
 
+            if(root.right!= null)
+                dfs(root.right,list);
+        }
+    }
 }

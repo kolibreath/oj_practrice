@@ -1,36 +1,25 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class LowestCommonAncestorOfaBST {
 
-public class RemoveDuplicatesFromLinkedListII {
 
-    public static class ListNode {
+    public class TreeNode {
         int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
     }
 
-    static class Solution {
-        boolean flag = false;
+    class Solution {
+        public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+            if(root.val == p.val || root.val == q.val)
+                return root;
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+            if(root.val < p.val && root.val < q.val){
+                return lowestCommonAncestor(root.right,p,q);
+            }else if(root.val > q.val && root.val > p.val){
+                return lowestCommonAncestor(root.left,p,q);
+            }else{
+                return root;
             }
-            return head;
         }
-
     }
-
 }

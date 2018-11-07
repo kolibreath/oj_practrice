@@ -1,36 +1,36 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class PathSumiii {
 
-    public static class ListNode {
+
+    public class TreeNode {
         int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
     }
 
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+    class Solution {
+        int counter=0;
+        public int pathSum(TreeNode root, int sum) {
+            if(root==null)return 0;
+            DFS(root,sum);
+            pathSum(root.left,sum);
+            pathSum(root.right,sum);
+            return counter;
         }
 
-    }
+        private void DFS(TreeNode node,int sum){
+            if(node==null){
+                return;
+            }
+            if(sum-node.val==0){
+                counter++;
+            }
+            DFS(node.left,sum-node.val);
+            DFS(node.right,sum-node.val);
 
+        }
+    }
 }

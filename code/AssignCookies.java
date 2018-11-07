@@ -1,36 +1,43 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.Arrays;
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
+public class AssignCookies {
     static class Solution {
-        boolean flag = false;
+        public int findContentChildren(int[] child, int[] cookie) {
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
+            qsort(child);
+            qsort(cookie);
 
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+            int i = 0 ,j = 0;
+            for(i = 0;i <child.length && i< cookie.length;i++){
+                if(child[j]<=cookie[i]){
+                    j++;
                 }
-                head = head.next;
             }
-            return head;
+            return j;
         }
 
-    }
+        public int partition(int[] arr,int low,int high){
+            int pivot = arr[low];
+            while(low < high){
+                while( low < high && arr[high]>= pivot) --high;
+                arr[low] = arr[high];
+                while( low< high  && arr[low] <= pivot) ++low;
+                arr[high] = arr[low];
+            }
+            arr[low] = pivot;
+            return low;
+        }
 
+        public void qsort(int arr[],int low,int high){
+            if(low < high){
+                int pivot = partition(arr,low,high);
+                qsort(arr,low,pivot-1);
+                qsort(arr,pivot+1,high);
+            }
+        }
+
+        public void qsort(int arr[]){
+            qsort(arr,0,arr.length-1);
+        }
+    }
 }

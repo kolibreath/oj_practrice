@@ -1,36 +1,34 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+public class MajorityElements {
 
     static class Solution {
-        boolean flag = false;
+        public int majorityElement(int[] nums) {
+            qsort(nums);
+            return nums[nums.length/2];
+        }
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+        int partition(int nums[], int low, int high){
+            int pivot = nums[low];
+            while(low < high){
+                while(low < high && nums[high]>= pivot) high--;
+                nums[low] = nums[high];
+                while(low < high && nums[low] <= pivot) low++;
+                nums[high] = nums[low];
             }
-            return head;
+            nums[low] = pivot;
+            return  low;
+        }
+
+        void qsort(int nums[]){
+            qsort(nums,0,nums.length-1);
+        }
+
+        void qsort(int nums[], int low, int high){
+            if(low < high){
+                int p = partition(nums,low,high);
+                qsort(nums,low,p-1);
+                qsort(nums,p+1,high);
+            }
         }
 
     }
-
 }

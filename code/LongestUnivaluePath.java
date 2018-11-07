@@ -1,36 +1,25 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+public class LongestUnivaluePath {
+    class Solution {
+        private int res = 0;
+        public int longestUnivaluePath(TreeNode root) {
+            if(root == null)
+                return 0;
+            helper(root);
+            return res;
         }
 
-    }
 
+        private int helper(TreeNode node ){
+            if(node ==null)
+                return 0;
+            int left = helper(node.left);
+            int right = helper(node.right);
+
+            left = node.left != null && node.val== node.left.val ? left + 1: 0;
+            right = node.right != null && node.val== node.right.val ? right + 1: 0;
+
+            res = Math.max(res,left+ right);
+            return res;
+        }
+    }
 }

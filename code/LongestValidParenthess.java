@@ -1,36 +1,26 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.Stack;
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+public class LongestValidParenthess {
 
     static class Solution {
-        boolean flag = false;
+        public int longestValidParentheses(String s) {
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+            Stack<Integer> stack = new Stack<>();
+            int start = 0;
+            int max = 0;
+            for(int i=0;i<s.length();i++){
+                if(s.charAt(i)=='(')
+                    stack.push(i);
+                else {
+                    if(stack.isEmpty()){
+                        start = i + 1;
+                    }else{
+                        stack.pop();
+                        max = stack.isEmpty()?Math.max(max,i-start +1):Math.max(max,i - stack.peek());
+                    }
                 }
-                head = head.next;
             }
-            return head;
+            return max;
         }
-
     }
-
 }

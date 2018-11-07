@@ -1,36 +1,19 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.Arrays;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class Heaters {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+   static class Solution {
+        public int findRadius(int[] houses, int[] heaters) {
+            Arrays.sort(houses);
+            Arrays.sort(heaters);
+            int i = 0, result = 0;
+            for (int house: houses){
+                while(i + 1 < heaters.length && Math.abs(house - heaters[i])<= Math.abs(house - heaters[i + 1])){
+                    i++;
                 }
-                head = head.next;
+                result = Math.abs(house - heaters[i]);
             }
-            return head;
+            return result;
         }
-
     }
-
 }

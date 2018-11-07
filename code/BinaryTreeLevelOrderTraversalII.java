@@ -1,36 +1,46 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class BinaryTreeLevelOrderTraversalII {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+     public class TreeNode {
+         int val;
+         TreeNode left;
+         TreeNode right;
+         TreeNode(int x) { val = x; }
+     }
+        class Solution {
+            public List<List<Integer>> levelOrderBottom(TreeNode root) {
 
-    static class Solution {
-        boolean flag = false;
+                if(root ==null)
+                    return new ArrayList<>();
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
+                List<List<Integer>> result = new ArrayList<>();
+                Queue<TreeNode> queue = new LinkedList<>();
 
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+                queue.add(root);
+
+                while(!queue.isEmpty()){
+
+                    List<Integer> temp = new ArrayList<>();
+                    int size = queue.size();
+                    for(int i=0;i<size;i++){
+                     TreeNode node  = queue.poll();
+                     temp.add(node.val);
+
+                     if(node.left!=null)
+                         queue.add(node.left);
+                     if(node.right!=null)
+                         queue.add(node.right);
+
+                    }
+
+                    if(!temp.isEmpty())
+                        result.add(temp);
                 }
-                head = head.next;
+                Collections.reverse(result);
+
+                return result;
+                }
             }
-            return head;
-        }
 
     }
-
-}

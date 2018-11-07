@@ -1,36 +1,39 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
+public class Permutations {
     static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+        public List<List<Integer>> permute(int[] nums) {
+            if(nums == null || nums.length== 0)
+                return new ArrayList<>();
+            List<List<Integer>> res  =  new ArrayList<>();
+            perMutations(res,0,nums);
+            return res;
         }
 
-    }
+        public void perMutations(List<List<Integer>> res,int start,int nums[]){
+            if(start >= nums.length){
+                res.add(converter(nums));
+            }
+            for(int i = start;i<nums.length;i++){
+                swap(nums,i,start);
+                perMutations(res,start+1,nums);
+                swap(nums,i,start);
+            }
+        }
 
+        public void swap(int num[],int index1,int index2){
+            int temp = num[index1];
+            num[index1] = num[index2];
+            num[index2] = temp;
+        }
+
+        public List<Integer> converter(int nums[]){
+            List<Integer> list=  new ArrayList<>();
+            for(int n : nums){
+                list.add(n);
+            }
+            return list;
+        }
+    }
 }

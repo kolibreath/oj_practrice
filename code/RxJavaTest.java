@@ -1,36 +1,24 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import rx.Scheduler;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
-public class RemoveDuplicatesFromLinkedListII {
+import java.util.Observable;
+import java.util.concurrent.TimeUnit;
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
+public class RxJavaTest {
+
+    public static void main(String args[]){
+        testCountDown();
     }
 
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
-        }
-
+    private static void testCountDown(){
+        rx.Observable.timer(2,TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        System.out.print(aLong);
+                    }
+                });
     }
-
 }

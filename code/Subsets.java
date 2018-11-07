@@ -1,36 +1,33 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class Subsets {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
+    //注意使用格式化字符串
     static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+        public List<List<Integer>> subsets(int[] nums) {
+            if(nums ==null||nums.length ==0){
+                return new ArrayList<>();
             }
-            return head;
+
+            int from = 0;
+            int to = (int) (Math.pow(2,nums.length) - 1);
+
+            List<List<Integer>> list = new ArrayList<>();
+            for(int i=from;i<=to;i++){
+
+                String format = "%0" + nums.length + "d";
+                String binary = String.format(format,Integer.valueOf(Integer.toBinaryString(i)));
+
+                List<Integer> set  = new ArrayList<>();
+                for(int j= 0; j < binary.length();j++){
+                    if(binary.charAt(j) != '0'&& Integer.valueOf(binary) != 0){
+                        set.add(nums[j]);
+                    }
+                }
+                list.add(set);
+            }
+            return list;
         }
-
     }
-
 }

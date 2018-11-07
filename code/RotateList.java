@@ -1,36 +1,39 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class RotateList {
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+   static public class ListNode {
+     int val;
+     ListNode next;
+     ListNode(int x) { val = x; }
+ }
 
     static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+        public ListNode rotateRight(ListNode head, int k) {
+            if(head == null)
+                return null;
+            if(k == 0)
+                return head;
+            ListNode cur= head;
+            int counter = 0;
+            while(cur != null){
+                cur = cur.next;
+                counter++;
             }
-            return head;
+            int numbers[] = new int[counter];
+            cur = head;
+            counter = 0;
+            while(cur!= null){
+                numbers[(counter+k)%numbers.length] = cur.val;
+                cur = cur.next;
+                counter ++ ;
+            }
+            ListNode newNode=  new ListNode(numbers[0]);
+            ListNode newHead = newNode;
+            for(int i =1;i<numbers.length ;i++){
+                newNode.next = new ListNode(numbers[i]);
+                newNode = newNode.next;
+            }
+
+            return newHead;
         }
-
     }
-
 }

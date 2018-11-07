@@ -1,36 +1,23 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+public class MinimalSizeSubArray {
 
     static class Solution {
-        boolean flag = false;
+        public int minSubArrayLen(int s, int[] nums) {
+            if(nums == null || nums.length == 0)
+                return 0;
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+            int i = 0, j = 0, min = Integer.MAX_VALUE;
+            int sum = 0;
+            while (j < nums.length) {
+                sum += nums[j];
+                while (sum >= s) {
+                    sum -= nums[i];
+                    min = Math.min(min,j - i );
+                    i++;
                 }
-                head = head.next;
+                j++;
             }
-            return head;
+            return min == Integer.MAX_VALUE ? 0 : min + 1;
         }
 
     }
-
 }

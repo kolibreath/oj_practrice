@@ -1,36 +1,58 @@
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class EmployeeImportance {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
+static class Employee {
+    // It's the unique id of each node;
+    // unique id of this employee
+    public int id;
+    // the importance value of this employee
+    public int importance;
+    // the id of direct subordinates
+    public List<Integer> subordinates;
+};
     static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+        public int getImportance(List<Employee> employees, int id) {
+            if(employees ==null || employees.size() == 0){
+                return 0;
             }
-            return head;
+
+            Employee e = getEmployee(employees,id);
+            return getValue(employees,e.id);
+
         }
 
-    }
+        public int getValue(List<Employee> employees, int id){
+            Employee employee = getEmployee(employees,id);
+            if(employee.subordinates ==null){
+                return employee.importance;
+            }
+            int sum = employee.importance;
+            for(int i: employee.subordinates){
+                sum += getValue(employees,i);
+            }
 
+            return sum;
+        }
+
+        public Employee getEmployee(List<Employee> employees, int id){
+            int low = 0, high =employees.size()-1;
+
+            while(low != high){
+                if(employees.get(low).id != id){
+                    low ++;
+                }else{
+                    return employees.get(low);
+                }
+
+                if(employees.get(high).id != id){
+                    high --;
+                }else{
+                    return employees.get(high);
+                }
+            }
+
+            return employees.get(low);
+        }
+    }
 }

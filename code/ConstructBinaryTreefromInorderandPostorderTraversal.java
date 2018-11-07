@@ -1,36 +1,35 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class ConstructBinaryTreefromInorderandPostorderTraversal {
 
-public class RemoveDuplicatesFromLinkedListII {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
+   public static class TreeNode {
+       int val;
+       TreeNode left;
+       TreeNode right;
+       TreeNode(int x) { val = x; }
+   }
+
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        return buildTree(inorder, 0, inorder.length-1, postorder, 0, postorder.length-1);
     }
 
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
+    public TreeNode buildTree(int[] in, int inStart, int inEnd, int[] post, int postStart, int postEnd){
+        if(inStart > inEnd || postStart > postEnd){
+            return null;
+        }
+        int rootVal = post[postEnd];
+        int rootIndex = 0;
+        for(int i = inStart; i <= inEnd; i++){
+            if(in[i] == rootVal){
+                rootIndex = i;
+                break;
             }
-            return head;
         }
 
-    }
+        int len = rootIndex - inStart;
+        TreeNode root = new TreeNode(rootVal);
+        root.left = buildTree(in, inStart, rootIndex-1, post, postStart, postStart+len-1);
+        root.right = buildTree(in, rootIndex+1, inEnd, post, postStart+len, postEnd-1);
 
+        return root;
+    }
 }

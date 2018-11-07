@@ -1,36 +1,17 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
+public class SqrtX {
     static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+        public int mySqrt(int x) {
+            int left = 1, right = Integer.MAX_VALUE ;
+            while(true){
+                int mid = left + (right - left)/2;
+                if(mid > x /mid){
+                    right = mid -1;
+                }else {
+                    if (mid + 1 > x/(mid + 1))
+                        return mid;
+                    left = mid + 1;
                 }
-                head = head.next;
             }
-            return head;
         }
-
     }
-
 }

@@ -1,36 +1,49 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class LetterCasePermutation {
+    //this method will be max time exceeded
+        class Solution {
+            public List<String> letterCasePermutation(String S) {
+                if( S == null)
+                    return new ArrayList<>();
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+                if( S.length() == 0){
+                    List<String> list = new ArrayList<>();
+                    list.add("");
+                    return list;
                 }
-                head = head.next;
+                List<String> list = new ArrayList<>();
+                change(list,0,S);
+
+                if(list.size() !=0 )
+                    return list;
+                else{
+                    list.add(S);
+                    return list;
+                }
             }
-            return head;
+
+            private void change(List<String> list,int index,String str){
+                for(int i=index;i<str.length();i++){
+                    if(Character.isAlphabetic(str.charAt(i))) {
+                        char lowerCase[] = str.toCharArray();
+                        lowerCase[i] = Character.toLowerCase(lowerCase[i]);
+                        String lower = String.valueOf(lowerCase);
+                        if(!list.contains(lower))
+                            list.add(lower);
+
+                        change(list,index + 1,lower);
+
+                        char upperCase[] = str.toCharArray();
+                        upperCase[i] = Character.toUpperCase(lowerCase[i]);
+                        String upper = String.valueOf(upperCase);
+                        if(!list.contains(upper))
+                            list.add(upper);
+
+                        change(list,index + 1,upper);
+                    }
+                }
+            }
         }
-
-    }
-
 }

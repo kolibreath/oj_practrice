@@ -1,36 +1,35 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-public class RemoveDuplicatesFromLinkedListII {
+public class N_aryTreePostOrderTraversalIterative {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
+    class Node {
+        public int val;
+        public List<Node> children;
 
-    static class Solution {
-        boolean flag = false;
+        public Node() {}
 
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
-                }
-                head = head.next;
-            }
-            return head;
+        public Node(int _val,List<Node> _children) {
+            val = _val;
+            children = _children;
         }
+    };
 
+    class Solution {
+        public List<Integer> postorder(Node root) {
+            if (root == null)
+                return new ArrayList<>();
+            List<Integer> list = new ArrayList<>();
+            Stack<Node> stack = new Stack<>();
+            stack.push(root);
+
+            while (!stack.isEmpty()) {
+                Node node = stack.pop();
+                list.add(node.val);
+                for (int i = node.children.size() - 1; i >= 0; i--) {
+                    stack.push(node.children.get(i));
+                }
+            }
+            return list;
+        }
     }
-
 }

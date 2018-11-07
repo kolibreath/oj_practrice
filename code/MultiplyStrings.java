@@ -1,36 +1,33 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+public class MultiplyStrings {
+   static  class Solution {
+        public String multiply(String num1, String num2) {
+            if(num1==null || num2 == null)
+                return "";
+            int p1 = num1.length(), p2 = num2.length();
+            int result[] = new int[p1 + p2];
+            for(int i = p1 - 1;i>=0;i--){
+                for(int j = p2 - 1;j>=0;j--){
+                    int multi = (num1.charAt(i) - '0')*(num2.charAt(j) - '0');
+                    int curP = i + j + 1;
+                    int curPB = i + j;
+                    int sum = result[curP] + multi;
 
-public class RemoveDuplicatesFromLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-       public  ListNode(int x) { val = x; }
-    }
-
-    static class Solution {
-        boolean flag = false;
-
-        public ListNode deleteDuplicates(ListNode empty) {
-            ListNode head = new ListNode(Integer.MAX_VALUE);
-            head = empty;
-            Set<Integer> set = new HashSet<>();
-            Set<Integer> duplicates = new HashSet<>();
-
-            while(head.next !=null){
-                if(!set.contains(head.val)){
-                    set.add(head.val);
-                }else{
-                    duplicates.add(head.val);
+                    result[curP] = sum % 10;
+                    result[curPB] = result[curPB] + sum/10;
                 }
-                head = head.next;
             }
-            return head;
+
+            String anwser = "";
+            boolean flag = true;
+            for(int i : result){
+                if(i == 0 && flag)
+                    continue;
+                else{
+                    flag = false;
+                    anwser += i;
+                }
+            }
+            return anwser.length() == 0? "0":anwser;
         }
-
     }
-
 }
