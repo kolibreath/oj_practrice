@@ -24,8 +24,11 @@ LinkedList既可以作为Queue也可以作为Stack ，其中实现了的poll()�
 <br>
 ![](http://wx2.sinaimg.cn/large/d6225d36ly1fzt5i6dzo6j21f80ju44f.jpg)
 常见的使用LinkedList的情景<br>
-    - BFS
-    ```
+    
+ -  BFS
+
+
+```
     //指定泛型
     LinkedList queue = new LinkedList<TreeNode>();
 
@@ -49,5 +52,5 @@ LinkedList既可以作为Queue也可以作为Stack ，其中实现了的poll()�
             counter ++;
         }
     }
-    ```
+```
 
