@@ -1,10 +1,16 @@
 # Java 中常见的数据结构和算法
 
+> 按字母排序
 ## A
 - Arrays.sort
 使用快速排序的方法排序数组
 ![](http://wx2.sinaimg.cn/large/d6225d36ly1fzt62h1at7j235s0os473.jpg)<br>
 有多种3重载方法基本类型数组重载没有问题
+
+## B
+- 二分搜索 binary sort
+binary sort的逆运用：<br>
+[Binary sort 二分搜索](https://leetcode-cn.com/explore/featured/card/top-interview-questions-easy/7/trees/51/)
 
 ## C
 - Collections.sort
@@ -13,7 +19,17 @@
 ![](http://wx2.sinaimg.cn/large/d6225d36ly1fzt63hje22j21qg0u0d.jpg)
 
 
-## List 系列 
+## D 
+## E
+## F
+## G
+## H
+## I
+## J
+## k
+
+## L
+###  List 系列 
 > 注意需要使用``import``指令 ``import java.util.*;`` 
 - LinkedList 
 
@@ -54,3 +70,9 @@ LinkedList既可以作为Queue也可以作为Stack ，其中实现了的poll()�
     }
 ```
 
+## M
+## N
+## O
+## P
+## Q
+### quick-sort

@@ -3,4 +3,5 @@
 *.iml
 .idea/
 *idea/
-
+./code/.DS_store
+./Ds_store
