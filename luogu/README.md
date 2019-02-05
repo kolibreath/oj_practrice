@@ -6,5 +6,5 @@
 |[A+B](https://www.luogu.org/problemnew/show/P1001)|[题解](https://github.com/kolibreath/oj_practrice/blob/master/luogu/APlusB.java)|java|简单|输入输出|
 |[小玉买文具](https://www.luogu.org/problemnew/show/P1421)|[题解](https://github.com/kolibreath/oj_practrice/blob/master/luogu/BuyPencil.java)|java|简单|输入输出|
 |[[COCI2006-2007#2] ](https://www.luogu.org/problemnew/show/P4413)|[题解](https://github.com/kolibreath/oj_practrice/blob/master/luogu/MeanOfTwo.java)|java|简单|输入输出|
-|[[COCI2006-2007#1] Modulo ](https://www.luogu.org/problemnew/show/P4325)|[题解](https://github.com/kolibreath/oj_practrice/blob/master/luogu/Modulo.java)|java|简单|哈希|
-
+|[COCI2006-2007#1Modulo](https://www.luogu.org/problemnew/show/P4325)|[题解](https://github.com/kolibreath/oj_practrice/blob/master/luogu/Modulo.java)|java|简单|哈希|
+|[P1151 子数整数](https://www.luogu.org/problemnew/show/P1151)|[题解](https://github.com/kolibreath/oj_practrice/blob/master/luogu/SubInteger.java)|java|简单|暴力法/字符串|
