@@ -11,5 +11,13 @@ public class 反转链表 {
             }
             return dummy.next;
         }
+
+        public boolean isLoopExist(ListNode head){
+            ListNode slow = head, fast = head;
+            while(fast != null && fast.next != null){
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+        }
     }
 }

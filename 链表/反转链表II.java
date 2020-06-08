@@ -20,7 +20,10 @@ public class 反转链表II {
                 pre = cur;
                 cur = temp;
             }
-//            if(pre != null) pre.next = cur;
+            ListNode p = pre;
+            while(p.next != null)
+                p = p.next;
+            p.next = cur;
             return pre;
         }
     }
