@@ -7,7 +7,7 @@ public class 二叉树的最近公共祖先 {
             if(left != null && right != null) return root;
             if(left == null) return  right;
             if(right == null) return left;
-            return root;
+            return null;
         }
     }
 }
