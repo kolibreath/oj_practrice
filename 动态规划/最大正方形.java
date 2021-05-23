@@ -20,6 +20,7 @@ public class 最大正方形 {
                 }
             }
             return maxSide * maxSide;
+
         }
     }
 }
