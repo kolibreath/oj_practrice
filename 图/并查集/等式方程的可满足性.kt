@@ -1,44 +1,48 @@
 class 等式方程的可满足性 {
-    class UnionFind(n:Int){
-        private val parent = IntArray(n){it}
-//        隔代压缩
-        private fun find(x:Int):Int{
-            var _x = x
-            while(_x != parent[_x]){
-                parent[_x] = parent[parent[_x]]
-                _x = parent[_x]
-            }
-            return _x
-        }
-
-//        合并两个子集
-        fun union(x:Int, y:Int) {
-            val rootX = find(x)
-            val rootY = find(y)
-            parent[rootX] = rootY
-        }
-
-        fun isConnected(x:Int, y:Int):Boolean = find(x) == find(y)
-    }
-
     class Solution {
         fun equationsPossible(equations: Array<String>): Boolean {
-            val unionFind = UnionFind(26)
-            for (equation in equations) {
-                if (equation[1] == '=') {
-                    val index1 = equation[0] - 'a'
-                    val index2 = equation[3] - 'a'
-                    unionFind.union(index1, index2)
+            val unionFind = UnionFind()
+            for(eq in equations) {
+                // 首先只处理联通关系
+                if(eq[1] == '=') {
+                    val first = eq[0] - 'a'
+                    val second = eq[3] - 'a'
+                    unionFind.union(first, second)
                 }
             }
-            for (equation in equations) {
-                if(equation[1] == '!'){
-                    val index1 = equation[0] - 'a'
-                    val index2 = equation[3] - 'a'
-                    if(unionFind.isConnected(index1, index2)) return false
+
+            for(eq in equations) {
+                if(eq[1] == '!') {
+                    val first = eq[0] - 'a'
+                    val second = eq[3] - 'a'
+                    if (unionFind.isSameSet(first, second)) return false
                 }
             }
             return true
         }
+
+        class UnionFind {
+            private val parents = IntArray(26){it}
+            fun find(char: Int): Int {
+                if(parents[char] == char) return char
+                val p = find(parents[char])
+                parents[char] = p
+                return p
+            }
+            fun union(char1: Int, char2: Int) {
+                parents[find(char2)] = find(char1)
+            }
+            fun isSameSet(char1: Int, char2: Int): Boolean {
+                val head1 = find(char1)
+                val head2 = find(char2)
+                return head1 == head2
+            }
+        }
     }
+}
+
+fun main() {
+    val solution = 等式方程的可满足性.Solution()
+    val array = arrayOf("a==b","e==c","b==c","a!=e")
+    println(solution.equationsPossible(array))
 }
